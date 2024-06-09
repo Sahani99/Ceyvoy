@@ -1,0 +1,83 @@
+/* Center the form vertically and horizontally */
+#questionnaire {
+    width: 100%;   /* Full viewport width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* Light grey background */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px; /* Add padding for mobile view */
+}
+
+/* Style for the form container */
+form {
+    background-color: #129485; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Style for the labels */
+label {
+    display: block; /* Make labels block elements */
+    margin-bottom: 10px; /* Space between label and input */
+    font-size: 1em; /* Standard font size */
+    color: #333333; /* Dark grey text */
+}
+
+/* Style for each form section */
+.form-section {
+    width: 48%; /* Take up roughly half the width */
+    margin-bottom: 20px; /* Space between form sections */
+}
+
+/* Style for the select and input fields */
+select, input[type="number"], input[type="text"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Inner padding */
+    margin-top: 5px; /* Space between label and input */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    font-size: 1em; /* Standard font size */
+}
+
+/* Style for the checkboxes */
+input[type="checkbox"] {
+    margin-right: 10px; /* Space between checkbox and label text */
+}
+
+/* Style for the submit button */
+input[type="submit"],
+input[type="reset"] {
+    background-color: #007bff; /* Blue background */
+    color: #ffffff; /* White text */
+    padding: 10px 20px; /* Padding around text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1em; /* Standard font size */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    margin-right: 10px;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 769px) {
+    form {
+        flex-direction: column; /* Stack form sections vertically */
+    }
+    .form-section {
+        width: 100%; /* Full width for each section */
+    }
+}

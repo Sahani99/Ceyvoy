@@ -1,0 +1,29 @@
+#home {
+    background: url('../assets/bg1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh; /* Ensures it takes up the full viewport height */
+    width: 100%;   /* Ensures it takes up the full viewport width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+
+@media screen and (max-width:769px){
+    #home{
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 90px;
+        right: -500px;
+        width: 300px;
+        height: 100vh;
+        background-color: black;
+        box-shadow: 0 40px 60px 0.1;
+        padding: 40px 0 0 10px;
+    }
+}
