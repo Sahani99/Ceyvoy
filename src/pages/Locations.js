@@ -1,38 +1,66 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../styles/Locations.css';
 
+function Locations() {
+  const [locations, setLocations] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const itemsPerPage = 10;
 
-    function Locations() {
-      const [cards] = useState([
-        {title: 'card-1', text: 'text content sample'},
-        {title: 'card-2', text: 'text content sample'},
-        {title: 'card-3', text: 'text content sample'},
-        {title: 'card-4', text: 'text content sample'},
-        {title: 'card-5', text: 'text content sample'},
-        {title: 'card-6', text: 'text content sample'}
-        // ... other cards
-      ]);
 
-    return (
-      <div id="locations">
-        <div className="location">
-          <section>
-            <div className="container">
-              <div className="cards">
-                {cards.map((card) => (
-                  <div className="card" key={card.title}>
-                    <h3>{card.title}</h3>
-                    <p>{card.text}</p>
-                  </div>
-                ))}
-              </div>
+  useEffect(() => {
+    const fetchLocations = async () => {
+      const response = await axios.get('http://localhost/api.php', {
+        params: { page: currentPage, limit: itemsPerPage },
+      });
+      setLocations(response.data.locations);
+      setTotalPages(response.data.totalPages);
+    };
+
+    fetchLocations();
+  }, [currentPage]);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  return (
+    <div id="locations">
+      <div className="location">
+        <section>
+          <div className="container">
+            <div className="cards">
+              {locations.map((card, index) => (
+                <div className="card" key={index}>
+                  <h3>{card.title}</h3>
+                  <p>{card.text}</p>
+                </div>
+              ))}
             </div>
-          </section>
-        </div>
-  
-        <div className="map"></div>
+          </div>
+          <div className="pagination">
+            <button onClick={handlePrevPage} disabled={currentPage === 1}>
+              Previous
+            </button>
+            <span>Page {currentPage} of {totalPages}</span>
+            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+              Next
+            </button>
+          </div>
+        </section>
       </div>
-    );
-  }
-  
-  export default Locations;
+      <div className="map"></div>
+    </div>
+  );
+}
+
+export default Locations;

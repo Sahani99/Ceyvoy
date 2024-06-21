@@ -1,24 +1,26 @@
 /* Center the form vertically and horizontally */
 #questionnaire {
-    width: 100%;   /* Full viewport width */
+   
+    width: 100%;   /* Ensures it takes up the full viewport width */
+    background-image: url('../assets/bg7.jpg'); /* Set the background image */
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff; /* Light grey background */
-    margin-top: 10px;
-    margin-bottom: 10px;
     padding: 20px; /* Add padding for mobile view */
 }
 
 /* Style for the form container */
 form {
-    background-color: #129485; /* White background */
+    background-color: #a0dbf644; /* White background */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    width: 100%;
+    width: 50%;
     box-sizing: border-box; /* Include padding and border in element's total width and height */
-    display: flex;
+    display:inline-block;
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -28,12 +30,12 @@ label {
     display: block; /* Make labels block elements */
     margin-bottom: 10px; /* Space between label and input */
     font-size: 1em; /* Standard font size */
-    color: #333333; /* Dark grey text */
+    color: #e6e6e6; /* Dark grey text */
 }
 
 /* Style for each form section */
 .form-section {
-    width: 48%; /* Take up roughly half the width */
+    width: 100%; /* Take up roughly half the width */
     margin-bottom: 20px; /* Space between form sections */
 }
 
@@ -56,7 +58,7 @@ input[type="checkbox"] {
 /* Style for the submit button */
 input[type="submit"],
 input[type="reset"] {
-    background-color: #007bff; /* Blue background */
+    background-color: #68e20a; /* Blue background */
     color: #ffffff; /* White text */
     padding: 10px 20px; /* Padding around text */
     border: none; /* No border */
@@ -76,6 +78,7 @@ input[type="reset"]:hover {
 @media screen and (max-width: 769px) {
     form {
         flex-direction: column; /* Stack form sections vertically */
+        width: 100%;
     }
     .form-section {
         width: 100%; /* Full width for each section */
