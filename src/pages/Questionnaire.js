@@ -1,10 +1,11 @@
 import { useState } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import ReactDOM from "react-dom/client";
+import { useNavigate } from 'react-router-dom';
 import '../styles/Questionnaire.css';
 
 function Questionnaire() {
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
   const currentYear = new Date().getFullYear();
   const nextYear = currentYear + 1;
   const [formData, setFormData] = useState({
@@ -19,7 +20,6 @@ function Questionnaire() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
     if (type === 'checkbox') {
       setFormData((prevData) => ({
         ...prevData,
@@ -45,6 +45,8 @@ function Questionnaire() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Submitted Data:', formData);
+    // Perform any necessary submission logic here
+    navigate('/Locations.js'); // Redirect to the locations page
   };
 
   return (
@@ -179,12 +181,9 @@ function Questionnaire() {
           startDate: new Date()
         })} />
         <input type="submit" />
-        
       </form>
     </div>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Questionnaire />);
 export default Questionnaire;
