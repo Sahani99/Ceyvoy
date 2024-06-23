@@ -10,11 +10,13 @@
     justify-content: center;
     align-items: center;
     padding: 20px; /* Add padding for mobile view */
+    font-family:'palatino Linotype';
+
 }
 
 /* Style for the form container */
 form {
-    background-color: #a0dbf644; /* White background */
+    background-color: #00000060; /* White background */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -29,8 +31,8 @@ form {
 label {
     display: block; /* Make labels block elements */
     margin-bottom: 10px; /* Space between label and input */
-    font-size: 1em; /* Standard font size */
-    color: #e6e6e6; /* Dark grey text */
+    font-size: 16px; /* Standard font size */
+    color: #ffffff; /* Dark grey text */
 }
 
 /* Style for each form section */
@@ -56,9 +58,19 @@ input[type="checkbox"] {
 }
 
 /* Style for the submit button */
-input[type="submit"],
+input[type="submit"]{
+    background-color: #285c00; /* Blue background */
+    color: #ffffff; /* White text */
+    padding: 10px 20px; /* Padding around text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1em; /* Standard font size */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    margin-right: 10px;
+}
 input[type="reset"] {
-    background-color: #68e20a; /* Blue background */
+    background-color: #5c0000; /* Blue background */
     color: #ffffff; /* White text */
     padding: 10px 20px; /* Padding around text */
     border: none; /* No border */
@@ -69,9 +81,11 @@ input[type="reset"] {
     margin-right: 10px;
 }
 
-input[type="submit"]:hover,
+input[type="submit"]:hover{
+    background-color: #3b8404; /* Darker blue on hover */
+}
 input[type="reset"]:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #c10f0f; /* Darker blue on hover */
 }
 
 /* Media query for smaller screens */

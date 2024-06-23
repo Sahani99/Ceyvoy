@@ -8,6 +8,8 @@ import Questionnaire from './pages/Questionnaire';
 import Locations from './pages/Locations';
 import Nopage from './pages/Nopage';
 
+
+
 function App() {
   return (
     <ImagesProvider>

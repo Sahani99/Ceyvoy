@@ -1,52 +1,96 @@
-#locations {
-    display: flex;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  color: clr-gray500;
+}
+
+.wrapper {
+  margin: 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  justify-content: center;
+}
+
+.card {
+  box-shadow: 0 0 10px 5px clr-gray300;
+  border-radius: 50px;
+  min-width: 28rem;
+  display: flex;
+
+  &__img {
+    width: 14rem;
+    height: 11rem;
+    object-fit: cover;
+  }
+
+  &__body {
+    margin: 1rem;
+    flex-grow: 1;
+  }
+  &__title {
+    line-height: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  &__description {
+    line-height: 1.2rem;
+  }
+  &__price {
+    font-size: 1.4rem;
+    margin-top: 0.6rem;
+
+    &::before {
+      content: "$";
+      font-size: 1rem;
+      position: relative;
+      top: -0.3rem;
+      padding-right: 0.1rem;
+    }
+  }
+
+.btn {
+    border: none;
+    border-top: 1px solid clr-gray300;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+    color: inherit;
     width: 100%;
-    height: 100vh; /* Full height */
+    padding-top: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      color: clr-primary;
+    }
   }
-  
-  .location {
-    width: 50%; /* Left side occupies 50% */
-    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+@media screen and (min-width: 600px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 16rem));
   }
-  
-  .map {
-    width: 50%; /* Right side occupies 50% */
-    background-color: #f0f0f0; /* Light grey background */
-  }
-  
-  .container {
-    padding: 20px;
-  }
-  
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    grid-template-rows: repeat(5, auto); /* 5 rows */
-    gap: 20px; /* Space between cards */
-  }
-  
+
   .card {
-    background-color: #ffffff; /* White background */
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 20px;
+    flex-direction: column;
     text-align: center;
-  }
-  
-  /* Responsive design for smaller screens */
-  @media screen and (max-width: 768px) {
-    #locations {
-      flex-direction: column; /* Stack elements vertically */
-    }
-  
-    .location, .map {
-      width: 100%; /* Full width */
-    }
-  
-    .cards {
-      grid-template-columns: 1fr; /* Single column layout */
-      grid-template-rows: none; /* Reset row configuration */
+    min-width: 14rem;
+
+    &__img {
+      width: 100%;
+      height: 12rem;
     }
   }
-  
+}
