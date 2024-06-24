@@ -9,16 +9,16 @@ const NavbarElements = () => {
 
     const handleHamburgerClick = () => {
       setIsOpen(!isOpen);
-      links.forEach(link => {
+      links.forEach((link) => {
         link.classList.toggle("fade");
       });
     };
 
     const hamburger = document.querySelector(".hamburger");
-    hamburger.addEventListener('click', handleHamburgerClick);
+    hamburger.addEventListener("click", handleHamburgerClick);
 
     return () => {
-      hamburger.removeEventListener('click', handleHamburgerClick);
+      hamburger.removeEventListener("click", handleHamburgerClick);
     };
   }, [isOpen]);
 
@@ -27,18 +27,30 @@ const NavbarElements = () => {
       <a href="index.html">
         {/* <img src={logo} alt="Logo" className="Logo" />; update after logo designed */}
       </a>
-      <div className={`hamburger ${isOpen ? 'toggle' : ''}`}>
+      <div className={`hamburger ${isOpen ? "toggle" : ""}`}>
         <div className="line1"></div>
         <div className="line2"></div>
         <div className="line3"></div>
       </div>
-      <ul id="NavbarElements" className={isOpen ? 'open' : ''}>
-        <li><a href="Home.js">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="profile.html">Profile</a></li>
+      <ul id="NavbarElements" className={isOpen ? "open" : ""}>
+        <li>
+          <a href="Home.js">Home</a>
+        </li>
+        <li>
+          <a href="Gallery.js">Gallery</a>
+        </li>
+        <li>
+          <a href="events.html">Events</a>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+        <li>
+          <a href="contact.html">Contact</a>
+        </li>
+        <li>
+          <a href="profile.html">Profile</a>
+        </li>
       </ul>
     </nav>
   );
