@@ -8,7 +8,7 @@ const Gallery = () => {
     <div className="main-content">
       <div uk-filter="target: .js-filter">
         <ul className="uk-navbar-nav">
-          <li className="uk-active" uk-filter-control>
+          <li className="uk-active" uk-filter-control="*">
             <a href="#">All</a>
           </li>
           <li uk-filter-control="[data-num='1']">
