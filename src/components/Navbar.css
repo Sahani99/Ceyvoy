@@ -1,41 +1,39 @@
-nav {
+nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(0, 0, 0);
+    background-color: black;
     padding: 20px 80px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
-    position: relative;
-    z-index: 1000; /* Ensure the navbar is above other content */
-  }
-  
-  #NavbarElements {
+}
+#NavbarElements{
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  #NavbarElements li {
+
+}
+
+#NavbarElements li{
     list-style: none;
     padding: 0 20px;
     position: relative;
-  }
-  
-  #NavbarElements li a {
+}
+
+#NavbarElements li a{
     text-decoration: none;
     font-size: 1.3rem;
     font-weight: 600;
     color: #fff;
     transition: 0.3s ease-in-out;
-  }
-  
-  #NavbarElements li a:hover,
-  #NavbarElements li a.active {
+}
+
+#NavbarElements li a:hover,
+#NavbarElements li a.active{
     color: rgb(0, 255, 255);
-  }
-  
-  #NavbarElements li a:hover::after,
-  #NavbarElements li a.active::after {
+}
+
+#NavbarElements li a:hover::after,
+#NavbarElements li a.active::after{
     content: "";
     width: 30%;
     height: 2px;
@@ -43,104 +41,50 @@ nav {
     position: absolute;
     bottom: -4px;
     left: 20px;
-  }
-  
-  .Logo {
+}
+.Logo {
     width: 100px;
     height: 100px;
   }
-  
-  .hamburger div {
-    width: 30px;
-    height: 3px;
-    background: #f2f5f7;
-    margin: 5px;
-    transition: all 0.3s ease;
-  }
-  
-  .hamburger {
+
+#mobile{
     display: none;
-  }
-  
-  @media screen and (max-width: 769px) {
-    nav {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px;
-      background-color: #000000;
+}
+
+#mobile i{
+    color: #fff;
+}
+
+@media screen and (max-width:769px){
+    #NavbarElements{
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 90px;
+        right: -500px;
+        width: 300px;
+        height: 100vh;
+        background-color: black;
+        box-shadow: 0 40px 60px 0.1;
+        padding: 40px 0 0 10px;
     }
-  
-    #NavbarElements {
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: #04090065;
-      width: 100%;
-      height: 300px;
-      flex-direction: column;
-      clip-path: circle(50px at 10% -20%);
-      -webkit-clip-path: circle(50px at 90% -10%);
-      transition: all 1s ease-out;
-      pointer-events: none;
-      overflow-y: auto; /* Allow scrolling if content overflows */
-      z-index: 999; /* Ensure it is above other content */
+
+    #NavbarElements.active{
+        right: 0px;
     }
-  
-    .hamburger {
-      display: block;
-      cursor: pointer;
-      margin-left: auto;
-      z-index: 1002;
+
+    #NavbarElements li{
+        margin-bottom: 25px;
     }
-  
-    #NavbarElements.open {
-      clip-path: circle(500px at 90% -10%);
-      -webkit-clip-path: circle(1000px at 90% -10%);
-      pointer-events: all;
+
+    #mobile{
+        display: block;
     }
-  
-    #NavbarElements li {
-      padding: 10px 0;
+
+    #mobile i{
+        font-size: 24px;
+        cursor: pointer;
     }
-  
-    #NavbarElements li.fade {
-      opacity: 1;
-    }
-  
-    #NavbarElements li:nth-child(1) {
-      transition: all 0.5s ease 0.2s;
-    }
-    #NavbarElements li:nth-child(2) {
-      transition: all 0.5s ease 0.4s;
-    }
-    #NavbarElements li:nth-child(3) {
-      transition: all 0.5s ease 0.6s;
-    }
-    #NavbarElements li:nth-child(4) {
-      transition: all 0.5s ease 0.7s;
-    }
-    #NavbarElements li:nth-child(5) {
-      transition: all 0.5s ease 0.8s;
-    }
-    #NavbarElements li:nth-child(6) {
-      transition: all 0.5s ease 0.9s;
-      margin: 0;
-    }
-    #NavbarElements li:nth-child(7) {
-      transition: all 0.5s ease 1s;
-      margin: 0;
-    }
-  
-    .toggle .line1 {
-      transform: rotate(-45deg) translate(-5px, 6px);
-    }
-  
-    .toggle .line2 {
-      width: 0;
-    }
-  
-    .toggle .line3 {
-      transform: rotate(45deg) translate(-5px, -6px);
-    }
-  }
-  
+}

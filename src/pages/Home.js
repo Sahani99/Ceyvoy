@@ -9,11 +9,11 @@ const Home = () => {
   return (
     <div id="home-container">
       <div id="home">
+      </div>
       <div id="home-text">
-        <Link to="/Questionnaire.js" className='link'>Plan your next holiday with us</Link>
+        <h1>Welcome to CeyVoy</h1>
+        <Link to="/Questionnaire.js">Plan your trip with us</Link>
       </div>
-      </div>
-      
     </div>
   );
 };
