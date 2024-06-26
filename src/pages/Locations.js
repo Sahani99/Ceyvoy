@@ -3,8 +3,8 @@ import "../styles/Locations.css";
 
 function Locations() {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 4; // Assuming you have 4 pages of static images
-  const itemsPerPage = 4; // Number of items per page
+  const totalPages = 4;
+  const itemsPerPage = 4;
 
   // Array of static images
   const images = [
@@ -88,6 +88,7 @@ function Locations() {
     },
   ];
 
+
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
@@ -100,37 +101,32 @@ function Locations() {
     }
   };
 
-  // Calculate start and end index for pagination
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
-  // Slice the images array based on currentPage and itemsPerPage
   const visibleImages = images.slice(startIndex, endIndex);
 
   return (
-
     <div id="locations">
       <div className="Lselector">
-      <div className="wrapper">
-        {visibleImages.map((item, index) => (
-          <Card
-            key={index}
-            img={item.img}
-            title={item.title}
-            description={item.description}
-            price={item.price}
-          />
-        ))}
-      </div>
-
-      <div className="pagination">
-        <button onClick={handlePrevPage} disabled={currentPage === 1} className="pagebtn">
-          Previous
-        </button>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages} className="pagebtn">
-          Next
-        </button>
-      </div>
+        <div className="wrapper">
+          {visibleImages.map((item, index) => (
+            <Card
+              key={index}
+              img={item.img}
+              title={item.title}
+              description={item.description}
+              price={item.price}
+            />
+          ))}
+        </div>
+        <div className="pagination">
+          <button onClick={handlePrevPage} disabled={currentPage === 1} className="pagebtn">
+            Previous
+          </button>
+          <button onClick={handleNextPage} disabled={currentPage === totalPages} className="pagebtn">
+            Next
+          </button>
+        </div>
       </div>
       <div className="map">
         <h1>Map</h1>
@@ -147,7 +143,6 @@ function Card({ img, title, description, price }) {
         <h2 className="card__title">{title}</h2>
         <p className="card__description">{description}</p>
         <h3 className="card__price">{price}</h3>
-        {/* <button className="card__btn">Add to Cart</button> */}
       </div>
     </div>
   );
