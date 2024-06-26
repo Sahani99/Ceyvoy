@@ -1,62 +1,59 @@
-import { Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
-// import logo from '../assets/logo.png'; update after logo added
 
-class NavbarElements extends Component{
-    state={clicked: false};
-    handleclick =() =>{
-        this.setState({clicked: !this.state.clicked
-        })
-    }
-    render(){
+const NavbarElements = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return(
-        <>
-        <nav>
-            <a href="index.html">
-                {/* <img src={logo} alt="Logo" />; */} update after logo designed
-            </a>
-            <div>
-                <ul id="NavbarElements" className={this.state.clicked ? "active" : ""}>
-                    <li>
-                        <a
-                        href="Home.js">Home</a>
-                    </li>
-                    <li>
-                        <a
-                        href="gallery.html">Gallery</a>
-                    </li>
-                    <li>
-                        <a
-                        href="./Event.js">Events</a>
-                    </li>
-                    <li>
-                        <a
-                        href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a
-                        href="contact.html">Contact</a>
-                    </li>
-                    <li>
-                        <a
-                        href="profile.html">Profile</a>
-                    </li>
-                </ul>
-            </div>
-            <div id="mobile" onClick={this.handleclick}>
-                <i id="bar"
-                className={this.state.clicked ?
-                    "fas fa-times" : 
-                    "fas fa-bars"
-                }>
+  useEffect(() => {
+    const links = document.querySelectorAll("#NavbarElements li");
 
-                </i>
-            </div>
-        </nav>
-        </>
-    )
-}
-}
+    const handleHamburgerClick = () => {
+      setIsOpen(!isOpen);
+      links.forEach((link) => {
+        link.classList.toggle("fade");
+      });
+    };
+
+    const hamburger = document.querySelector(".hamburger");
+    hamburger.addEventListener("click", handleHamburgerClick);
+
+    return () => {
+      hamburger.removeEventListener("click", handleHamburgerClick);
+    };
+  }, [isOpen]);
+
+  return (
+    <nav>
+      <a href="index.html">
+        {/* <img src={logo} alt="Logo" className="Logo" />; update after logo designed */}
+      </a>
+      <div className={`hamburger ${isOpen ? "toggle" : ""}`}>
+        <div className="line1"></div>
+        <div className="line2"></div>
+        <div className="line3"></div>
+      </div>
+      <ul id="NavbarElements" className={isOpen ? "open" : ""}>
+        <li>
+          <a href="Home.js">Home</a>
+        </li>
+        <li>
+          <a href="Gallery.js">Gallery</a>
+        </li>
+        <li>
+          <a href="events.html">Events</a>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+        <li>
+          <a href="contact.html">Contact</a>
+        </li>
+        <li>
+          <a href="profile.html">Profile</a>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
 export default NavbarElements;
