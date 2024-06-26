@@ -8,6 +8,7 @@ import Questionnaire from "./pages/Questionnaire";
 import Locations from "./pages/Locations";
 import Nopage from "./pages/Nopage";
 import Gallery from "./pages/Gallery";
+import Event from "./pages/Event";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Questionnaire.js" element={<Questionnaire />} />
           <Route path="/Locations.js" element={<Locations />} />
           <Route path="/Gallery.js" element={<Gallery />} />
+          <Route path="/Event.js" element={<Event />} />
           <Route path="*" element={<Nopage />} />
         </Routes>
       </BrowserRouter>
