@@ -6,7 +6,7 @@ function Locations() {
   const totalPages = 4; // Assuming you have 4 pages of static images
   const itemsPerPage = 4; // Number of items per page
 
-  // Array of static images
+
   const images = [
     {
       //img: require("../assets/3.jpeg"), // Importing local image using require
