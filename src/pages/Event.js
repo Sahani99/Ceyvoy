@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import '../styles/Event.css';
-import item1 from '../assets/bg1.jpg';
-import item2 from '../assets/bg1.jpg';
-import item3 from '../assets/bg1.jpg';
-import item4 from '../assets/bg1.jpg';
-import item5 from '../assets/bg1.jpg';
-import item6 from '../assets/bg1.jpg';
-import item7 from '../assets/bg1.jpg';
-import item8 from '../assets/bg1.jpg';
-import item9 from '../assets/bg1.jpg';
-import item10 from '../assets/bg1.jpg';
+import item1 from '../assets/item1.jpg';
+import item2 from '../assets/item2.jpg';
+import item3 from '../assets/item3.jpg';
+import item4 from '../assets/item4.jpg';
+import item5 from '../assets/item5.jpg';
+import item6 from '../assets/item6.jpg';
+import item7 from '../assets/item7.jpg';
+import item8 from '../assets/item8.jpg';
+import item9 from '../assets/item9.jpg';
+import item10 from '../assets/item10.jpg';
 
 const Event = () => {
   const events = [

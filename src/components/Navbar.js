@@ -40,7 +40,7 @@ const NavbarElements = () => {
           <a href="Gallery.js">Gallery</a>
         </li>
         <li>
-          <a href="events.html">Events</a>
+          <a href="Event.js">Event</a>
         </li>
         <li>
           <a href="about.html">About</a>
