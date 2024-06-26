@@ -10,7 +10,7 @@ const Home = () => {
     <div id="home-container">
       <div id="home">
       <div id="home-text">
-        <Link to="/Questionnaire.js" className='link'>Plan your next holiday with us</Link>
+        <Link to="/Questionnaire.js" className='link'>Plan your next holiday</Link>
       </div>
       </div>
       
