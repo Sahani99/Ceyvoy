@@ -1,17 +1,7 @@
-/* 
-
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-} */
-
 #locations {
   display: flex;
   min-height: max-content;
+  flex-direction: row; /* Map on right, locations on left */
 }
 
 .Lselector, .map {
@@ -20,86 +10,100 @@
   border: 1px solid #ccc;
 }
 
-
 .wrapper {
   margin-top: 40px;
   display: grid;
-  gap: 100px;
-  /* grid-template-columns: 1fr; */
+  gap: 100px; /* Adjust gap for better spacing */
   justify-content: center;
-  height: 100vh;
+  height: auto; /* Adjust height to fit content */
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 16rem));
 }
 
 .card {
-  box-shadow: 0 0 10px 5px ;
-  border-radius: 50px 50px 50px 50px;
+  box-shadow: 0 0 10px 5px;
+  border-radius: 20px;
   height: 320px;
   width: 300px;
   display: flex;
+  flex-direction: column; /* Ensure flex direction is column */
   font-size: medium;
-
-img {
-    height: 50%;
-    object-fit: cover;
-    border-radius: 50px 50px 0px 0px;
-  }
-
-.card.body {
-    /* margin: 1rem; */
-    height: fit-content;
-  }
-.card.title {
-    line-height: 1.4rem;
-    margin-bottom: 0.5rem;
-  }
-  .card.description {
-    line-height: 1.2rem;
-  }
-  .card.price {
-    font-size: 1.4rem;
-    margin-top: 0.6rem;
-
-    &::before {
-      content: "$";
-      font-size: 1rem;
-      position: relative;
-      top: -0.3rem;
-      padding-right: 0.1rem;
-    }
-  }
-
-  .pagebtn {
-    border: 0;
-    height: 100%;
-    padding: 5px 15px;
-    background: #221069;
-    font-size: 30px;
-    color: #580b0b;
-    position: relative;
-    right: -100px;
-    /* opacity: 0; */
-    transition: all 0.5s;
-
-    &:hover {
-      color: clr-primary;
-    }
-  }
+  background-color: #fff; /* Add background color for better visibility */
+  text-align: center;
 }
 
-@media screen and (min-width: 668px) {
+.card img {
+  height: 50%;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.card .card__body {
+  padding: 10px;
+  height: fit-content;
+}
+
+.card .card__title {
+  line-height: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.card .card__description {
+  line-height: 1.2rem;
+}
+
+.card .card__price {
+  font-size: 1.4rem;
+  margin-top: 0.6rem;
+}
+
+.card .card__price::before {
+  content: "$";
+  font-size: 1rem;
+  position: relative;
+  top: -0.3rem;
+  padding-right: 0.1rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination .pagebtn {
+  border: 0;
+  padding: 10px 20px;
+  background: #221069;
+  font-size: 1rem;
+  color: #fff;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination .pagebtn:hover {
+  background-color: #580b0b;
+}
+
+
+
+@media screen and (max-width: 668px) {
+
+  #locations {
+    flex-direction: column-reverse; /* Display map at the top in mobile view */
+  }
+  
+
+  .pagination {
+    justify-content: space-around; /* Adjust pagination button alignment */
+  }
   .wrapper {
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 16rem));
-    flex-direction: column;
+    margin-top: 40px;
+    display: grid;
+    justify-content: center;
+    height: auto; /* Adjust height to fit content */
+    grid-template-columns:max-content;
+
   }
 
-  .card {
-    flex-direction: column;
-    text-align: center;
-    min-width: 14rem;
-
-    &__img {
-      width: 100%;
-      height: 12rem;
-    }
-  }
 }
