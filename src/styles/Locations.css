@@ -27,6 +27,7 @@
   font-size: medium;
   background-color: #fff;
   text-align: center;
+  height: 300px;
 }
 
 .Lcard img {
@@ -36,16 +37,15 @@
 
 .Lcard .card__body {
   padding: 10px;
-  height: fit-content;
 }
 
 .Lcard .card__title {
-  line-height: 1.4rem;
-  margin-bottom: 0.5rem;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .Lcard .card__description {
-  line-height: 1.2rem;
+  font-size: 14px;
 }
 
 .Lcard .card__price {
@@ -65,9 +65,12 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  column-gap: 50px;
 }
 
 .pagination .pagebtn {
+  height: 40px;
+  width: 100px;
   border: 0;
   padding: 10px 20px;
   background: #221069;
@@ -76,6 +79,7 @@
   margin: 0 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+ 
 }
 
 .pagination .pagebtn:hover {
@@ -164,7 +168,9 @@
 
   .wrapper {
     grid-template-columns: 1fr;
-    column-gap: 20px;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items in a column */
+    align-items: center; /* Center items horizontally */
   }
 
   .Lselector{
