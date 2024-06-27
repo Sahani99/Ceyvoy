@@ -23,19 +23,19 @@ const Login = () => {
             <div className="role-selection">
               <div className="card-group">
                 <div
-                  className={`card ${role === "Traveller" ? "selected" : ""}`}
+                  className={`Logincard ${role === "Traveller" ? "selected" : ""}`}
                   onClick={() => setRole("Traveller")}
                 >
                   Traveller
                 </div>
                 <div
-                  className={`card ${role === "Tourguide" ? "selected" : ""}`}
+                  className={`Logincard ${role === "Tourguide" ? "selected" : ""}`}
                   onClick={() => setRole("Tourguide")}
                 >
                   Tourguide
                 </div>
                 <div
-                  className={`card ${role === "Accommodation" ? "selected" : ""}`}
+                  className={`Logincard ${role === "Accommodation" ? "selected" : ""}`}
                   onClick={() => setRole("Accommodation")}
                 >
                   Accommodation

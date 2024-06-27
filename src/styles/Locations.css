@@ -1,7 +1,7 @@
 #locations {
   display: flex;
   min-height: max-content;
-  flex-direction: row; /* Map on right, locations on left */
+  flex-direction: row; 
 }
 
 .Lselector, .map {
@@ -13,50 +13,47 @@
 .wrapper {
   margin-top: 40px;
   display: grid;
-  gap: 100px; /* Adjust gap for better spacing */
+  gap: 100px; 
   justify-content: center;
-  height: auto; /* Adjust height to fit content */
+  height: auto; 
   grid-template-columns: repeat(auto-fit, minmax(14rem, 16rem));
 }
 
-.card {
+.Lcard {
   box-shadow: 0 0 10px 5px;
   border-radius: 20px;
-  height: 320px;
-  width: 300px;
   display: flex;
-  flex-direction: column; /* Ensure flex direction is column */
+  flex-direction: column; 
   font-size: medium;
-  background-color: #fff; /* Add background color for better visibility */
+  background-color: #fff;
   text-align: center;
+  height: 300px;
 }
 
-.card img {
-  height: 50%;
+.Lcard img {
   object-fit: cover;
   border-radius: 20px 20px 0 0;
 }
 
-.card .card__body {
+.Lcard .card__body {
   padding: 10px;
-  height: fit-content;
 }
 
-.card .card__title {
-  line-height: 1.4rem;
-  margin-bottom: 0.5rem;
+.Lcard .card__title {
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
-.card .card__description {
-  line-height: 1.2rem;
+.Lcard .card__description {
+  font-size: 14px;
 }
 
-.card .card__price {
+.Lcard .card__price {
   font-size: 1.4rem;
   margin-top: 0.6rem;
 }
 
-.card .card__price::before {
+.Lcard .card__price::before {
   content: "$";
   font-size: 1rem;
   position: relative;
@@ -68,9 +65,12 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  column-gap: 50px;
 }
 
 .pagination .pagebtn {
+  height: 40px;
+  width: 100px;
   border: 0;
   padding: 10px 20px;
   background: #221069;
@@ -79,31 +79,113 @@
   margin: 0 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+ 
 }
 
 .pagination .pagebtn:hover {
   background-color: #580b0b;
 }
 
+.location-details {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); 
+  color: #fff;
+  padding: 10px;
+  border-radius: 20px 20px 0 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.Lcard__img-container:hover .location-details {
+  display: flex; 
+  height: 500px;
+  width: 500px;
+  opacity: 1;
+  justify-content: center;
+  align-items:center;
+}
 
 
-@media screen and (max-width: 668px) {
+/* Modal styling */
+.location-details {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.location-details-content {
+  width: 500px;
+  height: 500px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location-details img {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.location-details h2, .location-details p, .location-details h3 {
+  margin-bottom: 10px;
+}
+
+.location-details button {
+  padding: 10px 20px;
+  background: #221069;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+/* Media query for mobile view */
+@media screen and (max-width: 768px) {
   #locations {
-    flex-direction: column-reverse; /* Display map at the top in mobile view */
+    flex-direction: column-reverse;
   }
-  
 
-  .pagination {
-    justify-content: space-around; /* Adjust pagination button alignment */
-  }
   .wrapper {
-    margin-top: 40px;
-    display: grid;
-    justify-content: center;
-    height: auto; /* Adjust height to fit content */
-    grid-template-columns:max-content;
-
+    grid-template-columns: 1fr;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items in a column */
+    align-items: center; /* Center items horizontally */
   }
 
+  .Lselector{
+    justify-content: center;
+  }
+
+  .Lcard {
+    box-shadow: 0 0 10px 5px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-content: center;
+    font-size: medium;
+    background-color: #fff;
+    text-align: center;
+    width:50%;
+  }
 }
