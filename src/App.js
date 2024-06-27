@@ -9,6 +9,9 @@ import Locations from "./pages/Locations";
 import Nopage from "./pages/Nopage";
 import Gallery from "./pages/Gallery";
 import Event from "./pages/Event";
+import Login from './pages/Login.js';
+import CurrencyConverter from './pages/CurrencyConverter.js';
+
 
 function App() {
   return (
@@ -24,6 +27,8 @@ function App() {
           <Route path="/Locations.js" element={<Locations />} />
           <Route path="/Gallery.js" element={<Gallery />} />
           <Route path="/Event.js" element={<Event />} />
+          <Route path="/Login.js" element={<Login />} />
+          <Route path="/Currency" element={<CurrencyConverter />} />
           <Route path="*" element={<Nopage />} />
         </Routes>
       </BrowserRouter>

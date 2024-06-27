@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./Footer.css";
-
+import {  } from 'react-router-dom';
 
 class footer extends Component{
     state={clicked: false};
@@ -38,7 +38,7 @@ class footer extends Component{
                     <a href="contact.html">Contact</a>
                 </li>
                 <li>
-                    <a href="currency-converter.html">Currency Converter</a>
+                    <a href="/Currency">Currency Converter</a>
                 </li>
             </ul>
                         </div>    

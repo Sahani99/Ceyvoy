@@ -51,6 +51,9 @@ const NavbarElements = () => {
         <li>
           <a href="profile.html">Profile</a>
         </li>
+        <li>
+          <a href="./Login.js">Login</a>
+        </li>
       </ul>
     </nav>
   );
