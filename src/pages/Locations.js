@@ -7,15 +7,15 @@ function Locations() {
   const totalPages = 4;
   const itemsPerPage = 4;
 
-  const handleDetailsClick = (location) => {
-    setSelectedLocation(location);
-  };
+  // const handleDetailsClick = (location) => {
+  //   setSelectedLocation(location);
+  // };
 
   const handleCloseDetails = () => {
     setSelectedLocation(null);
   };
 
-  const location = [
+  const locations = [
     {
       img: require("../assets/bg3.jpg"), 
       title: "Tie Up Boots",
@@ -110,7 +110,7 @@ function Locations() {
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const visibleImages = location.slice(startIndex, endIndex);
+  const visibleImages = locations.slice(startIndex, endIndex);
 
   return (
     <div id="locations" className={selectedLocation ? "blur-background" : ""}>
@@ -118,13 +118,12 @@ function Locations() {
         <div className="wrapper">
           {visibleImages.map((item, index) => (
             <Card
-              className="Lcard"
               key={index}
               img={item.img}
               title={item.title}
               description={item.description}
               price={item.price}
-              onClick={() => handleDetailsClick(item)}
+              // onClick={() => handleDetailsClick(item)}
             />
           ))}
         </div>
@@ -149,7 +148,7 @@ function Locations() {
         <h1>Map</h1>
       </div>
       {selectedLocation && (
-        <div className="location-details">
+        <div className={`location-details ${selectedLocation ? "open" : ""}`}>
           <div className="location-details-content">
             <h2>{selectedLocation.title}</h2>
             <img src={selectedLocation.img} alt={selectedLocation.title} />
@@ -163,11 +162,16 @@ function Locations() {
   );
 }
 
-function Card({ img, title, description, price, onClick }) {
+function Card({ img, title, description, price }) {
   return (
-    <div className="Lcard" onClick={onClick}>
+    <div className="Lcard">
       <div className="card__img-container">
         <img src={img} className="card__img" alt="Product" />
+        <div className="location-details">
+          <h2>{title}</h2>
+          <p>{description}</p>
+          <h3>${price}</h3>
+        </div>
       </div>
       <div className="card__body">
         <h2 className="card__title">{title}</h2>
