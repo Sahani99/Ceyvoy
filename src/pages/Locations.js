@@ -1,100 +1,34 @@
 import { useState } from "react";
+import Card from "../components/card"; // Adjust import path based on your project structure
 import "../styles/Locations.css";
+import locations from "../components/location"; // Adjust path to match your actual file structure
 
 function Locations() {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 4;
-  const itemsPerPage = 4;
+  const [selectedCards, setSelectedCards] = useState([]);
+  const itemsPerPage = 4; // Define itemsPerPage here
 
-  // const handleDetailsClick = (location) => {
-  //   setSelectedLocation(location);
-  // };
+  // Calculate total pages based on the length of locations array and itemsPerPage
+  const totalPages = Math.ceil(locations.length / itemsPerPage);
 
-  const handleCloseDetails = () => {
-    setSelectedLocation(null);
+  const handleCardSelect = (index, isSelected) => {
+    const actualIndex = (currentPage - 1) * itemsPerPage + index;
+    const updatedSelectedCards = [...selectedCards];
+
+    if (isSelected) {
+      updatedSelectedCards.push(locations[actualIndex]);
+    } else {
+      const cardIndex = updatedSelectedCards.findIndex(
+        (card) => card === locations[actualIndex]
+      );
+      if (cardIndex !== -1) {
+        updatedSelectedCards.splice(cardIndex, 1);
+      }
+    }
+
+    setSelectedCards(updatedSelectedCards);
   };
-
-  const locations = [
-    {
-      img: require("../assets/bg3.jpg"), 
-      title: "Tie Up Boots",
-      description: "Fall Favorite • Boots",
-      price: "45.00",
-    },
-    {
-      img: require("../assets/bg3.jpg"), 
-      title: "Tie Up Boots",
-      description: "Fall Favorite • Boots",
-      price: "45.00",
-    },
-    {
-      img: require("../assets/bg3.jpg"), 
-      title: "Tie Up Boots",
-      description: "Fall Favorite • Boots",
-      price: "45.00",
-    },
-    {
-      img: require("../assets/bg3.jpg"), 
-      title: "Tie Up Boots",
-      description: "Fall Favorite • Boots",
-      price: "45.00",
-    },
-    {
-      img: require("../assets/bg3.jpg"), 
-      title: "Tie Up Boots",
-      description: "Fall Favorite • Boots",
-      price: "45.00",
-    },
-    {
-      img: require("../assets/bg3.jpg"), 
-      title: "Tie Up Boots",
-      description: "Fall Favorite • Boots",
-      price: "45.00",
-    },
-    {
-      img: require("../assets/bg3.jpg"), 
-      title: "Tie Up Boots",
-      description: "Fall Favorite • Boots",
-      price: "45.00",
-    },
-    {
-      img: require("../assets/bg3.jpg"), 
-      title: "Tie Up Boots",
-      description: "Fall Favorite • Boots",
-      price: "45.00",
-    },
-    {
-      img: require("../assets/bg3.jpg"), 
-      title: "Tie Up Boots",
-      description: "Fall Favorite • Boots",
-      price: "45.00",
-    },
-    {
-      img: require("../assets/bg4.jpg"),
-      title: "Plush Sweater",
-      description: "Sweater Season • Cozy",
-      price: "29.95",
-    },
-    {
-      img: require("../assets/bg5.jpg"),
-      title: "Slim-Fit Denim",
-      description: "Denim • Versatile",
-      price: "24.99",
-    },
-    {
-      img: require("../assets/bg6.jpg"),
-      title: "White Blouse",
-      description: "Blouse • Lacey",
-      price: "19.95",
-    },
-    {
-      img: require("../assets/bg6.jpg"),
-      title: "White Blouse",
-      description: "Blouse • Lacey",
-      price: "19.95",
-    },
-  ];
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -108,22 +42,42 @@ function Locations() {
     }
   };
 
+  const handleCardHover = (index) => {
+    const actualIndex = (currentPage - 1) * itemsPerPage + index;
+    setSelectedLocation(locations[actualIndex]);
+  };
+
+  const handleCardLeave = () => {
+    setSelectedLocation(null);
+  };
+
+  const handleConfirm = () => {
+    // Implement logic to save selectedCards to the database or handle as required
+    console.log("Selected Cards:", selectedCards);
+    // Reset selection state after saving to database if needed
+    setSelectedCards([]);
+  };
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const visibleImages = locations.slice(startIndex, endIndex);
 
   return (
-    <div id="locations" className={selectedLocation ? "blur-background" : ""}>
+    <div id="locations" className={selectedLocation ? "blurred" : ""}>
       <div className="Lselector">
         <div className="wrapper">
           {visibleImages.map((item, index) => (
             <Card
-              key={index}
+              key={startIndex + index}
               img={item.img}
               title={item.title}
               description={item.description}
               price={item.price}
-              // onClick={() => handleDetailsClick(item)}
+              isSelected={selectedCards.some((card) => card === item)}
+              onSelect={(isSelected) => handleCardSelect(index, isSelected)}
+              onMouseEnter={() => handleCardHover(index)}
+              onMouseLeave={handleCardLeave}
+              id={startIndex + index} // Pass a unique id to each card
             />
           ))}
         </div>
@@ -144,38 +98,32 @@ function Locations() {
           </button>
         </div>
       </div>
-      <div className="map">
-        <h1>Map</h1>
-      </div>
+
       {selectedLocation && (
-        <div className={`location-details ${selectedLocation ? "open" : ""}`}>
-          <div className="location-details-content">
-            <h2>{selectedLocation.title}</h2>
-            <img src={selectedLocation.img} alt={selectedLocation.title} />
-            <p>{selectedLocation.description}</p>
-            <h3>${selectedLocation.price}</h3>
-            <button onClick={handleCloseDetails}>Close</button>
-          </div>
+        <div className="location-details-content">
+          <img src={selectedLocation.img} alt={selectedLocation.title} />
+          <h2>{selectedLocation.title}</h2>
+          <p>{selectedLocation.description}</p>
+          <h3>${selectedLocation.price}</h3>
         </div>
       )}
-    </div>
-  );
-}
 
-function Card({ img, title, description, price }) {
-  return (
-    <div className="Lcard">
-      <div className="card__img-container">
-        <img src={img} className="card__img" alt="Product" />
-        <div className="location-details">
-          <h2>{title}</h2>
-          <p>{description}</p>
-          <h3>${price}</h3>
-        </div>
+      <div className="map">
+      <h1>Map</h1>
       </div>
-      <div className="card__body">
-        <h2 className="card__title">{title}</h2>
-        <h3 className="card__price">{price}</h3>
+
+      <div className="lbtn">
+        <button onClick={handleConfirm} className="confirm-btn">
+          Confirm Selection
+        </button>
+        <div className="selected-list">
+          <h3>Selected Places:</h3>
+          <ul>
+            {selectedCards.map((card, index) => (
+              <li key={index}>{card.title}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,11 +1,21 @@
 #locations {
-  display: flex;
-  min-height: max-content;
-  flex-direction: row; 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 6fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "Lselector map"
+    "lbtn lbtn"; /* Ensure lbtn spans both columns */
 }
 
-.Lselector, .map {
-  flex: 1;
+.Lselector {
+  grid-area: Lselector;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.map {
+  grid-area: map;
   padding: 20px;
   border: 1px solid #ccc;
 }
@@ -13,12 +23,11 @@
 .wrapper {
   margin-top: 40px;
   display: grid;
-  gap: 100px; 
+  gap: 100px;
   justify-content: center;
-  height: auto; 
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 16rem));
+  height: auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-
 
 .pagination {
   display: flex;
@@ -38,29 +47,27 @@
   margin: 0 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 20px 20px 20px 20px; 
+  border-radius: 20px 20px 20px 20px;
 }
 
 .pagination .pagebtn:hover {
   background-color: #0285a6;
 }
 
-/* Main styles for the card and transition */
 .Lcard {
   position: relative;
   border-radius: 20%;
   background-color: #f8f8f8;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .Lcard:hover {
   transform: scale(1.05);
 }
 
-/* Image container and overlay details on hover */
 .card__img-container {
   position: relative;
-  overflow:hidden;
 }
 
 .Lcard img {
@@ -70,49 +77,46 @@
   height: auto;
 }
 
-.location-details {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
+.location-details-content {
+  background-color: yellow;
+  padding: 20px;
+  position: fixed;
+  height: 500px;
+  width: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 0;
+  border-radius: 10px;
+  pointer-events: none; 
 }
 
-.card__img-container:hover .location-details {
-  opacity: 1;
-  visibility: visible;
+.Lcard:hover + .location-details-content {
+  display: flex;
+  overflow: auto;
 }
 
-.location-details h2,
-.location-details p,
-.location-details h3 {
+.location-details-content h2,
+.location-details-content p,
+.location-details-content h3 {
   margin: 10px 0;
 }
 
-.location-details img {
-  max-width: 80%;
-  max-height: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
+.location-details-content img {
+  height:auto;
+  width:auto;
+  border-radius: 10px;
 }
 
-/* Card body styling */
 .Lcard .card__body {
   padding: 10px;
+  margin-bottom:auto;
 }
 
 .Lcard .card__title {
   font-size: 20px;
-  margin-bottom: 10px;
 }
 
 .Lcard .card__description {
@@ -120,82 +124,123 @@
 }
 
 .Lcard .card__price {
-  font-size: 1.4rem;
-  margin-top: 0.6rem;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .Lcard .card__price::before {
   content: "$";
-  font-size: 1rem;
+  font-size: 16px;
   position: relative;
-  top: -0.3rem;
-  padding-right: 0.1rem;
+  top: -10px;
+  padding-right: 10px;
 }
 
-.location-details button {
+/* Check box */
+.checkbox-container {
+  width: 70px;
+  height: 35px;
+  background: #34495e;
+  margin: 20px 20px;
+  border-radius: 25px;
+  display:inline-block;
+  position: relative;
+}
+
+.checkbox-container input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.checkbox-container input[type=checkbox] + label {
+  z-index:2;
+  position:absolute;
+  margin-left:-15px;
+  width: 35px;
+  height: 35px;
+  background-color:#b40808;
+  border-radius:25px;
+  cursor: pointer;
+  transition:all 0.5s ;
+}
+
+.checkbox-container input[type=checkbox]:checked + label {
+  z-index:2;
+  background-color:#04cab3;
+  position:absolute;
+  margin-left:-13px;
+  width: 70px;
+  height: 35px;
+  border-radius:25px ;
+  cursor: pointer;
+}
+
+/* Confirm button */
+.lbtn {
+  align-content: center; 
+  background-color: #98BD9D; 
+  grid-area: lbtn;
+}
+
+.lbtn .confirm-btn {
   padding: 10px 20px;
   background: #221069;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 20%;
+  transition: all 0.3s ease;
+  border-radius: 20px 20px 20px 20px;
 }
 
-/* Modal styling */
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+.lbtn .confirm-btn:hover {
+  background-color: #0285a6;
 }
 
-.modal-background.open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.location-details-content {
-  width: 500px;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: scale(0.9);
-  transition: transform 0.3s ease;
-}
-
-.modal-background.open .location-details-content {
-  transform: scale(1);
-}
-
-.blur-background {
+.blurred .Lselector,
+.blurred .map {
   filter: blur(5px);
 }
+.selected-list {
+  margin-left: 50%;
+}
 
+.selected-list h3 {
+  margin-bottom: 10px;
+}
+
+.selected-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.selected-list li {
+  background: #f0f0f0;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 30%;
+}
 
 /* Media query for mobile view */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 668px) {
   #locations {
-    flex-direction: column-reverse;
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto auto auto; 
+    grid-template-areas: 
+      "map"
+      "Lselector"
+      "lbtn";
   }
 
   .wrapper {
     grid-template-columns: 1fr;
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack items in a column */
-    align-items: center; /* Center items horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .Lselector{
+  .Lselector {
     justify-content: center;
   }
 
@@ -203,11 +248,51 @@
     box-shadow: 0 0 10px 5px;
     border-radius: 20px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-content: center;
     font-size: medium;
     background-color: #fff;
     text-align: center;
-    width:50%;
+    width: 70%; 
+  }
+
+  .lbtn .confirm-btn {
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* Center align the confirm button on mobile */
+  }
+
+  .location-details-content {
+    background-color: yellow;
+    padding: 20px;
+    position: fixed;
+    height: 300px;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    border-radius: 10px;
+    pointer-events: none; 
+  }
+
+  .checkbox-container {
+    width: 50px;
+    height: 25px;
+    margin: 20px 20px;
+  }
+  
+  .checkbox-container input[type=checkbox] + label {
+    margin-left:-32px;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .checkbox-container input[type=checkbox]:checked + label {
+    margin-left:-32px;
+    width: 50px;
+    height: 25px;
   }
 }
