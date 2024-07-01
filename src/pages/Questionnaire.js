@@ -103,7 +103,7 @@ function Questionnaire() {
       <form onSubmit={handleSubmit}>
         {/* Trip Type */}
         <div className="form-section">
-          <label>
+          <label className="Qlabel">
             Select your trip type:
             <select name="triptype" value={formData.triptype} onChange={handleChange} required>
               <option value="" disabled>Select an option</option>
@@ -116,7 +116,7 @@ function Questionnaire() {
 
         {/* Number of Members */}
         <div className="form-section">
-          <label>
+          <label className="Qlabel">
             Number of Members:
             <input
               type="number"
@@ -134,14 +134,14 @@ function Questionnaire() {
 
                 {/* Arrival Date */}
                 <div className="form-section">
-          <label>Date of Arrival:</label>
+          <label className="Qlabel">Date of Arrival:</label>
           <DatePicker
             selected={formData.startDate}
             onChange={handleDateChange}
             minDate={new Date()}
             maxDate={new Date(nextYear, 11, 31)}
           />
-          <label>
+          <label className="Qlabel">
             Number of night staying:
             <input
               type="number"
@@ -157,7 +157,7 @@ function Questionnaire() {
 
         {/* Budget */}
         <div className="form-section">
-          <label>
+          <label className="Qlabel">
             Select your budget:
             <select name="budget" value={formData.budget} onChange={handleChange} required>
             <option value="" disabled>Select your budget : </option>
@@ -173,7 +173,7 @@ function Questionnaire() {
         {/* Preferred Environments */}
         <div className="form-section">
           <label>Preferred Environments:</label>
-          <label>
+          <label className="Qlabel">
             <input
               type="checkbox"
               name="environments"
@@ -183,7 +183,7 @@ function Questionnaire() {
             />
             Beach Side
           </label>
-          <label>
+          <label className="Qlabel">
             <input
               type="checkbox"
               name="environments"
@@ -193,7 +193,7 @@ function Questionnaire() {
             />
             Hill side
           </label>
-          <label>
+          <label className="Qlabel">
             <input
               type="checkbox"
               name="environments"
@@ -203,7 +203,7 @@ function Questionnaire() {
             />
             City
           </label>
-          <label>
+          <label className="Qlabel">
             <input
               type="checkbox"
               name="environments"
@@ -213,7 +213,7 @@ function Questionnaire() {
             />
             Rural
           </label>
-          <label>
+          <label className="Qlabel">
             <input
               type="checkbox"
               name="environments"
@@ -227,7 +227,7 @@ function Questionnaire() {
 
         {/* Language Spoken */}
         <div className="form-section">
-          <label>
+          <label className="Qlabel">
             Select a language:
             <select name="language" value={formData.language} onChange={handleChange} required>
               <option value="language1">English</option>

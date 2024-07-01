@@ -28,7 +28,7 @@ form {
 }
 
 /* Style for the labels */
-label {
+.Qlabel {
     display: block; /* Make labels block elements */
     margin-bottom: 10px; /* Space between label and input */
     font-size: 16px; /* Standard font size */
@@ -53,12 +53,12 @@ select, input[type="number"], input[type="text"] {
 }
 
 /* Style for the checkboxes */
-input[type="checkbox"] {
+.form-section input[type="checkbox"] {
     margin-right: 10px; /* Space between checkbox and label text */
 }
 
 /* Style for the submit button */
-input[type="submit"]{
+form input[type="submit"]{
     background-color: #285c00; /* Blue background */
     color: #ffffff; /* White text */
     padding: 10px 20px; /* Padding around text */

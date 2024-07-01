@@ -11,6 +11,7 @@ import Gallery from "./pages/Gallery";
 import Event from "./pages/Event";
 import Login from './pages/Login.js';
 import CurrencyConverter from './pages/CurrencyConverter.js';
+// import Test from './pages/Test.js';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/Event.js" element={<Event />} />
           <Route path="/Login.js" element={<Login />} />
           <Route path="/Currency" element={<CurrencyConverter />} />
+          {/* <Route path="/Test" element={<Test />} /> */}
           <Route path="*" element={<Nopage />} />
         </Routes>
       </BrowserRouter>
