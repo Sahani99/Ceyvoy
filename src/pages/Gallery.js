@@ -37,7 +37,6 @@ const Gallery = () => {
                 <span className="highlight uk-block">
                   Tea garden | Nuwara Eliya
                 </span>
-                <a href="#">More Info</a>
               </div>
               <div className="content-btn">
                 <button type="button">&#8594;</button>
@@ -53,7 +52,6 @@ const Gallery = () => {
             <div className="float-gallery-content">
               <div className="content uk-text-left">
                 <span className="highlight uk-block">Water Fall | Badulla</span>
-                <a href="#">More Info</a>
               </div>
               <div className="content-btn">
                 <button type="button">&#8594;</button>
@@ -101,7 +99,6 @@ const Gallery = () => {
                 <span className="highlight uk-block">
                   Temple | Anuradhapura
                 </span>
-                <a href="#">More Info</a>
               </div>
               <div className="content-btn">
                 <button type="button">&#8594;</button>
@@ -117,7 +114,6 @@ const Gallery = () => {
             <div className="float-gallery-content">
               <div className="content uk-text-left">
                 <span className="highlight uk-block">Sigiriya | Dambulla</span>
-                <a href="#">More Info</a>
               </div>
               <div className="content-btn">
                 <button type="button">&#8594;</button>
@@ -182,7 +178,6 @@ const Gallery = () => {
                 <span className="highlight uk-block">
                   Nine arch bridge | Badulla
                 </span>
-                <a href="#">More Info</a>
               </div>
               <div className="content-btn">
                 <button type="button">&#8594;</button>
