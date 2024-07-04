@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Questionnaire.css';
+import axios from "axios";
 
 function Questionnaire() {
   const navigate = useNavigate();
@@ -10,14 +11,14 @@ function Questionnaire() {
   const nextYear = currentYear + 1;
   const [formData, setFormData] = useState({
     budget: '',
-    NoOfMembers: '',
+    NoofMembers: '',
     triptype: '',
     environments: [],
-    language: '',
-    Stayingnights: '',
+    languages: '',
+    stayingnights: '', 
     startDate: new Date()
   });
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [budgetOptions, setBudgetOptions] = useState([
     { value: 'budget1', label: 'Below LKR 50,000' },
     { value: 'budget2', label: 'LKR 50,000 - LKR 100,000' },
@@ -30,7 +31,7 @@ function Questionnaire() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    if (name === 'NoOfMembers' && (value < 0 || value > 25)) {
+    if (name === 'NoofMembers' && (value < 0 || value > 25)) {
       return;
     }
     if (name === 'stayingnights' && (value < 0 || value > 30)) {
@@ -60,13 +61,26 @@ function Questionnaire() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
     console.log('Submitted Data:', formData);
-    navigate('/Locations.js'); 
+   
+  axios.post('http://localhost:80/api/user/save', formData)
+      .then(response => {
+        console.log('Data submitted successfully', response.data);
+        navigate('/Locations.js'); 
+      })
+      .catch(error => {
+        console.error('Error submitting data', error);
+        setIsSubmitting(false); // Re-enable submission if there is an error
+      });
   };
 
   useEffect(() => {
     const calculateMinBudget = () => {
-      const { triptype, NoOfMembers, stayingnights } = formData;
+      const { triptype, NoofMembers, stayingnights } = formData;
       let minBudgetPerPersonPerNight;
 
       if (triptype === 'trip1') minBudgetPerPersonPerNight = 15000; // Low budget
@@ -74,7 +88,7 @@ function Questionnaire() {
       else if (triptype === 'trip3') minBudgetPerPersonPerNight = 600000; // High budget
       else return;
 
-      const totalBudget = NoOfMembers * stayingnights * minBudgetPerPersonPerNight;
+      const totalBudget = NoofMembers * stayingnights * minBudgetPerPersonPerNight;
       
       const filteredOptions = [
         { value: 'budget1', label: 'Below LKR 50,000', limit: 50000 },
@@ -98,6 +112,8 @@ function Questionnaire() {
     calculateMinBudget();
   }, [formData]);
 
+
+
   return (
     <div id="questionnaire">
       <form onSubmit={handleSubmit}>
@@ -120,13 +136,13 @@ function Questionnaire() {
             Number of Members:
             <input
               type="number"
-              name="NoOfMembers"
+              name="NoofMembers"
               placeholder="Maximum number of members are 25"
-              value={formData.NoOfMembers}
+              value={formData.NoofMembers}
               onChange={handleChange}
               step="1"
               required
-              min="0"
+              min="1"
               max="25"
             />
           </label>
@@ -136,6 +152,7 @@ function Questionnaire() {
                 <div className="form-section">
           <label className="Qlabel">Date of Arrival:</label>
           <DatePicker
+            name="startDate"
             selected={formData.startDate}
             onChange={handleDateChange}
             minDate={new Date()}
@@ -229,7 +246,7 @@ function Questionnaire() {
         <div className="form-section">
           <label className="Qlabel">
             Select a language:
-            <select name="language" value={formData.language} onChange={handleChange} required>
+            <select name="languages" value={formData.languages} onChange={handleChange} required>
               <option value="language1">English</option>
               <option value="language2">Spanish</option>
               <option value="language3">German</option>
@@ -244,13 +261,13 @@ function Questionnaire() {
 
         <input type="reset" onClick={() => setFormData({
           budget: '',
-          NoOfMembers: '',
+          NoofMembers: '',
           triptype: '',
           environments: [],
           language: '',
           startDate: new Date()
         })} />
-        <input type="submit" />
+        <input type="submit" value="Submit" disabled={isSubmitting} />
       </form>
     </div>
   );
