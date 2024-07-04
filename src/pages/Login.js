@@ -1,215 +1,333 @@
-import React, { useState } from "react";
-import "./../styles/Login.css";
-
-import user_icon from "../assets/name.png";
-import email_icon from "../assets/emil.png";
-import password_icon from "../assets/pwrd.png";
+import React, { useState } from 'react';
+import '../styles/Login.css'; // Import the custom CSS
+import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaUpload, FaPhone } from 'react-icons/fa';
 
 const Login = () => {
-  const [action, setAction] = useState("Login");
-  const [showPassword, setShowPassword] = useState(false);
-  const [role, setRole] = useState("");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    licenseNumber: "",
-  });
-  const [message, setMessage] = useState("");
+    const [action, setAction] = useState("Login");
+    const [showPassword, setShowPassword] = useState(false);
+    const [role, setRole] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [licenseNumber, setLicenseNumber] = useState("");
+    const [description, setDescription] = useState("");
+    const [spokenLanguages, setSpokenLanguages] = useState([]);
+    const [category, setCategory] = useState("");
+    const [priceRange, setPriceRange] = useState("");
+    const [accommodationDescription, setAccommodationDescription] = useState("");
+    const [contactNumber, setContactNumber] = useState("");
+    const [address, setAddress] = useState("");
+    const [uploadedImages, setUploadedImages] = useState([]);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async () => {
-    if (
-      action === "Sign Up" &&
-      (formData.name === "" ||
-        formData.email === "" ||
-        formData.password === "" ||
-        formData.confirmPassword === "" ||
-        role === "")
-    ) {
-      setMessage("All fields are required.");
-      return;
-    }
-
-    if (
-      action === "Sign Up" &&
-      formData.password !== formData.confirmPassword
-    ) {
-      setMessage("Passwords do not match.");
-      return;
-    }
-
-    const url =
-      action === "Login"
-        ? "http://localhost/Ceyvoy/login.php"
-        : "http://localhost/Ceyvoy/signup.php";
-    const payload = {
-      name: formData.name,
-      email: formData.email,
-      password: formData.password,
-      role,
-      licenseNumber: formData.licenseNumber,
+    const handleRoleSelect = (selectedRole) => {
+        setRole(selectedRole);
     };
 
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    const handleLanguageSelect = (language) => {
+        const updatedLanguages = [...spokenLanguages];
+        if (updatedLanguages.includes(language)) {
+            updatedLanguages.splice(updatedLanguages.indexOf(language), 1);
+        } else {
+            updatedLanguages.push(language);
+        }
+        setSpokenLanguages(updatedLanguages);
+    };
 
-    const result = await response.json();
-    setMessage(result.message);
-  };
+    const handleImageUpload = (e) => {
+        const files = Array.from(e.target.files);
+        const urls = files.map((file) => URL.createObjectURL(file));
+        setUploadedImages((prevImages) => [...prevImages, ...urls]);
+    };
 
-  return (
-    <body className="login-page">
-      <div className="login-container">
-        <div className="header">
-          <div className="text">{action}</div>
-          <div className="underline"></div>
-        </div>
-
-        {action === "Sign Up" && (
-          <>
-            <div className="role-selection">
-              <div className="card-group">
-                <div
-                  className={`Logincard ${
-                    role === "Traveller" ? "selected" : ""
-                  }`}
-                  onClick={() => setRole("Traveller")}
-                >
-                  Traveller
+    return (
+        <div className="login-page">
+            <div className="login-container">
+                <div className="login-header">
+                    <div className="login-text">{action}</div>
+                    <div className="login-underline"></div>
                 </div>
-                <div
-                  className={`Logincard ${
-                    role === "Tourguide" ? "selected" : ""
-                  }`}
-                  onClick={() => setRole("Tourguide")}
-                >
-                  Tourguide
+
+                {action === "Sign Up" && (
+                    <>
+                        <div className="login-role-selection">
+                            <div className="login-card-group">
+                                <div
+                                    className={`login-card ${role === "Traveller" ? "selected" : ""}`}
+                                    onClick={() => handleRoleSelect("Traveller")}
+                                >
+                                    Traveller
+                                </div>
+                                <div
+                                    className={`login-card ${role === "Tourguide" ? "selected" : ""}`}
+                                    onClick={() => handleRoleSelect("Tourguide")}
+                                >
+                                    Tourguide
+                                </div>
+                                <div
+                                    className={`login-card ${role === "Accommodation" ? "selected" : ""}`}
+                                    onClick={() => handleRoleSelect("Accommodation")}
+                                >
+                                    Accommodation
+                                </div>
+                            </div>
+                        </div>
+
+                        {role === "Tourguide" && (
+                            <>
+                                <div className="login-input-group">
+                                    <FaUser />
+                                    <input
+                                        type="text"
+                                        placeholder="License Number"
+                                        value={licenseNumber}
+                                        onChange={(e) => setLicenseNumber(e.target.value)}
+                                    />
+                                </div>
+                                <div className="login-input-group">
+                                    <FaUser />
+                                    <input
+                                        type="text"
+                                        placeholder="Description"
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                    />
+                                </div>
+                                <div className="login-input-group">
+                                    <FaUpload />
+                                    <div>
+                                        <label htmlFor="upload">Upload Image</label>
+                                        <input
+                                            id="upload"
+                                            type="file"
+                                            accept="image/*"
+                                            style={{ display: 'none' }}
+                                            onChange={handleImageUpload}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="login-input-group">
+                                    <FaUser />
+                                    <input
+                                        type="text"
+                                        placeholder="Spoken Languages"
+                                        value={spokenLanguages.join(', ')}
+                                        readOnly
+                                    />
+                                    <div className="checkbox-container">
+                                        <input
+                                            type="checkbox"
+                                            id="english"
+                                            value="English"
+                                            onChange={() => handleLanguageSelect("English")}
+                                        />
+                                        <label htmlFor="english">English</label>
+
+                                        <input
+                                            type="checkbox"
+                                            id="sinhala"
+                                            value="Sinhala"
+                                            onChange={() => handleLanguageSelect("Sinhala")}
+                                        />
+                                        <label htmlFor="sinhala">Sinhala</label>
+
+                                        <input
+                                            type="checkbox"
+                                            id="hindi"
+                                            value="Hindi"
+                                            onChange={() => handleLanguageSelect("Hindi")}
+                                        />
+                                        <label htmlFor="hindi">Hindi</label>
+
+                                        <input
+                                            type="checkbox"
+                                            id="other-languages"
+                                            value="Other"
+                                            onChange={() => handleLanguageSelect("Other")}
+                                        />
+                                        <label htmlFor="other-languages">Other</label>
+                                    </div>
+                                </div>
+                            </>
+                        )}
+
+                        {role === "Accommodation" && (
+                            <>
+                                <div className="login-input-group">
+                                    <FaUser />
+                                    <input
+                                        type="text"
+                                        placeholder="Category"
+                                        value={category}
+                                        onChange={(e) => setCategory(e.target.value)}
+                                    />
+                                    <div className="checkbox-container">
+                                        <input
+                                            type="checkbox"
+                                            id="luxury"
+                                            value="Luxury"
+                                            onChange={() => {}}
+                                        />
+                                        <label htmlFor="luxury">Luxury</label>
+
+                                        <input
+                                            type="checkbox"
+                                            id="beach"
+                                            value="Beach"
+                                            onChange={() => {}}
+                                        />
+                                        <label htmlFor="beach">Beach</label>
+
+                                        <input
+                                            type="checkbox"
+                                            id="hill"
+                                            value="Hill"
+                                            onChange={() => {}}
+                                        />
+                                        <label htmlFor="hill">Hill</label>
+
+                                        <input
+                                            type="checkbox"
+                                            id="other-categories"
+                                            value="Other"
+                                            onChange={() => {}}
+                                        />
+                                        <label htmlFor="other-categories">Other</label>
+                                    </div>
+                                </div>
+                                <div className="login-input-group">
+                                    <FaUser />
+                                    <input
+                                        type="text"
+                                        placeholder="Price Range"
+                                        value={priceRange}
+                                        onChange={(e) => setPriceRange(e.target.value)}
+                                    />
+                                </div>
+                                <div className="login-input-group">
+                                    <FaUser />
+                                    <input
+                                        type="text"
+                                        placeholder="Description"
+                                        value={accommodationDescription}
+                                        onChange={(e) => setAccommodationDescription(e.target.value)}
+                                    />
+                                </div>
+                                <div className="login-input-group">
+                                    <FaUpload />
+                                    <div>
+                                        <label htmlFor="upload">Upload Image</label>
+                                        <input
+                                            id="upload"
+                                            type="file"
+                                            accept="image/*"
+                                            style={{ display: 'none' }}
+                                            onChange={handleImageUpload}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="login-input-group">
+                                    <FaPhone />
+                                    <input
+                                        type="text"
+                                        placeholder="Contact Number"
+                                        value={contactNumber}
+                                        onChange={(e) => setContactNumber(e.target.value)}
+                                    />
+                                </div>
+                                <div className="login-input-group">
+                                    <FaEnvelope />
+                                    <input
+                                        type="text"
+                                        placeholder="Address"
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                    />
+                                </div>
+                            </>
+                        )}
+                    </>
+                )}
+
+                <div className="login-inputs">
+                    {action === "Login" ? null : (
+                        <div className="login-input-group">
+                            <FaUser />
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                    )}
+
+                    <div className="login-input-group">
+                        <FaEnvelope />
+                        <input
+                            type="email"
+                            placeholder="Email Id"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="login-input-group">
+                        <FaLock />
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {showPassword ? (
+                            <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
+                        ) : (
+                            <FaEye onClick={() => setShowPassword(!showPassword)} />
+                        )}
+                    </div>
+
+                    {action === "Sign Up" && (
+                        <div className="login-input-group">
+                            <FaLock />
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Confirm Password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                            {showPassword ? (
+                                <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
+                            ) : (
+                                <FaEye onClick={() => setShowPassword(!showPassword)} />
+                            )}
+                        </div>
+                    )}
                 </div>
-                <div
-                  className={`Logincard ${
-                    role === "Accommodation" ? "selected" : ""
-                  }`}
-                  onClick={() => setRole("Accommodation")}
-                >
-                  Accommodation
+
+                {action === "Sign Up" ? null : (
+                    <div className="login-forgot-password">
+                        Forgot Password? <span>Click Here!</span>
+                    </div>
+                )}
+
+                <div className="login-submit-container">
+                    <div
+                        className={`login-submit ${action === "Login" ? "gray" : ""}`}
+                        onClick={() => setAction("Sign Up")}
+                    >
+                        Sign Up
+                    </div>
+                    <div
+                        className={`login-submit ${action === "Sign Up" ? "gray" : ""}`}
+                        onClick={() => setAction("Login")}
+                    >
+                        Login
+                    </div>
                 </div>
-              </div>
             </div>
-            {role === "Tourguide" && (
-              <div className="input license-input">
-                <img src={user_icon} alt="license number" />
-                <input
-                  type="text"
-                  name="licenseNumber"
-                  value={formData.licenseNumber}
-                  onChange={handleChange}
-                  placeholder="License Number"
-                />
-              </div>
-            )}
-          </>
-        )}
-
-        <div className="inputs">
-          {action === "Login" ? null : (
-            <div className="input">
-              <img src={user_icon} alt="name" />
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Name"
-              />
-            </div>
-          )}
-
-          <div className="input">
-            <img src={email_icon} alt="email" />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email Id"
-            />
-          </div>
-
-          <div className="input">
-            <img src={password_icon} alt="password" />
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Password"
-            />
-            <i
-              className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
-              onClick={() => setShowPassword(!showPassword)}
-            />
-          </div>
-
-          {action === "Sign Up" && (
-            <div className="input">
-              <img src={password_icon} alt="confirm password" />
-              <input
-                type={showPassword ? "text" : "password"}
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                placeholder="Confirm Password"
-              />
-              <i
-                className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
-                onClick={() => setShowPassword(!showPassword)}
-              />
-            </div>
-          )}
         </div>
-
-        {action === "Sign Up" ? null : (
-          <div className="forgot-password">
-            Forgot Password? <span>Click Here!</span>
-          </div>
-        )}
-
-        <div className="submit-container">
-          <div
-            className={`submit ${action === "Login" ? "gray" : ""}`}
-            onClick={() => setAction("Sign Up")}
-          >
-            Sign Up
-          </div>
-          <div
-            className={`submit ${action === "Sign Up" ? "gray" : ""}`}
-            onClick={() => setAction("Login")}
-          >
-            Login
-          </div>
-        </div>
-        <div className="submit-container">
-          <div className="submit" onClick={handleSubmit}>
-            Submit
-          </div>
-        </div>
-        {message && <div className="message">{message}</div>}
-      </div>
-    </body>
-  );
+    );
 };
 
 export default Login;
