@@ -17,7 +17,7 @@ function Card({
       <div className="card__body">
         <h2 className="card__title">{title}</h2>
         <h3 className="card__price">${price}</h3>
-        <div className="checkbox-container">
+        <div className="checkbox-location">
           <input type="checkbox" id={`checkbox-${id}`} checked={isSelected} onChange={() => onSelect(!isSelected)} />
           <label htmlFor={`checkbox-${id}`}></label>
         </div>

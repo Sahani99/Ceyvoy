@@ -108,22 +108,10 @@ function Locations() {
         </div>
       )}
 
-      <div className="map">
-      <h1>Map</h1>
-      </div>
-
       <div className="lbtn">
         <button onClick={handleConfirm} className="confirm-btn">
           Confirm Selection
         </button>
-        <div className="selected-list">
-          <h3>Selected Places:</h3>
-          <ul>
-            {selectedCards.map((card, index) => (
-              <li key={index}>{card.title}</li>
-            ))}
-          </ul>
-        </div>
       </div>
     </div>
   );
