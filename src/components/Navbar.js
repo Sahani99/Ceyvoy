@@ -46,7 +46,7 @@ const NavbarElements = () => {
           <a href="About.js">About</a>
         </li>
         <li>
-          <a href="contact.html">Contact</a>
+          <a href="Contact.js">Contact</a>
         </li>
         <li>
           <a href="profile.html">Profile</a>
