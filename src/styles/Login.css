@@ -1,18 +1,16 @@
-
 .login-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 130vh;
+    height: 130vh; /* page height, img */
     background-image: url('../assets/bg9.jpg');
     background-size: cover;
     background-position: center;
-    
 }
 
 .login-container {
     width: 450px;
-    padding: 20px ;
+    padding: 20px;
     background: rgba(245, 245, 245, 0.514);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
@@ -41,7 +39,6 @@
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-   
 }
 
 .toggle-action button {
@@ -70,7 +67,7 @@
 }
 
 .login-card {
-    background: #077fc5;
+    background: #024b75;
     border: 1px solid #ccc;
     padding: 10px 20px;
     margin: 0 10px;
@@ -78,7 +75,6 @@
     border-radius: 15px;
     width: 145px;
 }
-
 
 .login-card.selected {
     border-color: #73c6ce;
@@ -90,7 +86,6 @@
     text-align: center;
     color: rgb(233, 11, 11);
     margin-bottom: 20px;
-    
 }
 
 .login-inputs {
@@ -104,7 +99,8 @@
     position: relative;
 }
 
-.login-input-group input {
+.login-input-group input,
+.login-input-group select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -118,53 +114,63 @@
     cursor: pointer;
 }
 
-.checkbox-container {
+.login-checkbox-container {
     display: flex;
-    flex-direction: column;
-    gap: 10px; /* Adds space between each checkbox block */
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 10px;
 }
 
-.checkbox-container div {
+.login-checkbox-container div {
     display: flex;
     align-items: center;
-    margin-right: 20px; /* Adjust margin as needed */
+    margin-right: 20px;
 }
-
-.checkbox-container input[type="checkbox"] {
-    margin-right: 5px; /* Adjust margin between checkbox and label */
+/* align*/
+.login-checkbox-container input[type="checkbox"] {
+    margin-right: 5px;
 }
-
-
 
 .login-input-group h4 {
-    margin: 0 10px 10px 0; /* Adjust margin around the heading */
-    font-size: 18px; /* Adjust font size for the heading */
+    margin: 0 10px 10px 0;
+    font-size: 18px;
     color: #5a586d;
     padding-left: 10px;
-    font-weight:600;
-    
+    font-weight: 600;
 }
-.upload-container{
-    padding-left :10px; 
-    height: 5px;
-    border-radius: 10px;
+
+.upload-container {
+    padding-left: 10px;
+    margin-bottom: 15px;
 }
+
 .upload-label {
     background: #fbffff;
-    padding: 5px 10px;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     color: #6e696e;
-    align-items: center;
-    padding-left: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
 }
 
-.uploaded-image-name {
-    display: block;
-    margin-top: 8px;
-    color: rgb(26, 35, 41);
-    font-size: 12px;
-    padding-left: 10px;
+.uploaded-image-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.uploaded-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.remove-image {
+    cursor: pointer;
+    color: red;
 }
 
 .login-button-group {

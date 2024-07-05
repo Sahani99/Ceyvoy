@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Login.css'; // Import the custom CSS
-import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaUpload, FaPhone } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaUpload, FaPhone, FaTimesCircle } from 'react-icons/fa';
 
 const Login = () => {
     const [action, setAction] = useState("Login");
@@ -59,8 +59,12 @@ const Login = () => {
 
     const handleImageUpload = (e) => {
         const files = Array.from(e.target.files);
-        const urls = files.map((file) => file.name);
+        const urls = files.map((file) => URL.createObjectURL(file));
         setUploadedImages((prevImages) => [...prevImages, ...urls]);
+    };
+
+    const removeImage = (image) => {
+        setUploadedImages(uploadedImages.filter((img) => img !== image));
     };
 
     const togglePasswordVisibility = () => {
@@ -144,14 +148,20 @@ const Login = () => {
                                             disabled={isDisabled}
                                         />
                                         {uploadedImages.map((image, index) => (
-                                            <span key={index} className="uploaded-image-name">{image}</span>
+                                            <div key={index} className="uploaded-image-container">
+                                                <img src={image} alt={`uploaded ${index}`} className="uploaded-image" />
+                                                <FaTimesCircle
+                                                    className="remove-image"
+                                                    onClick={() => removeImage(image)}
+                                                />
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
                                 <div className="login-input-group">
                                     <FaUser />
                                     <h4>Spoken Languages</h4>
-                                    <div className="login-checkbox-container">
+                                    <div className="checkbox-container">
                                         <div>
                                             <input
                                                 type="checkbox"
@@ -202,7 +212,7 @@ const Login = () => {
                                 <div className="login-input-group">
                                     <FaUser />
                                     <h4>Categories</h4>
-                                    <div className="login-checkbox-container">
+                                    <div className="checkbox-container">
                                         <div>
                                             <input
                                                 type="checkbox"
@@ -253,12 +263,35 @@ const Login = () => {
                                         disabled={isDisabled}
                                     >
                                         <option value="">Select Price Range</option>
-                                        <option value="10-40">$10 - $40</option>
-                                        <option value="40-60">$40 - $60</option>
-                                        <option value="70-100">$70 - $100</option>
+                                        <option value="20000LKR - 50000LKR">20000LKR - 50000LKR</option>
+                                        <option value="50000LKR - 75000LKR">50000LKR - 75000LKR</option>
+                                        <option value="75000LKR - 100000LKR">75000LKR - 100000LKR</option>
                                         <option value="other">Other</option>
                                     </select>
                                 </div>
+                                
+                                <div className="login-input-group">
+                                    <FaPhone />
+                                    <input
+                                        type="text"
+                                        placeholder="Contact Number"
+                                        value={contactNumber}
+                                        onChange={(e) => setContactNumber(e.target.value)}
+                                        disabled={isDisabled}
+                                    />
+                                </div>
+
+                                <div className="login-input-group">
+                                    <FaUser />
+                                    <input
+                                        type="text"
+                                        placeholder="Address"
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                        disabled={isDisabled}
+                                    />
+                                </div>
+
                                 <div className="login-input-group">
                                     <FaUser />
                                     <input
@@ -269,6 +302,7 @@ const Login = () => {
                                         disabled={isDisabled}
                                     />
                                 </div>
+
                                 <div className="login-input-group">
                                     <FaUpload />
                                     <div className="upload-container">
@@ -282,92 +316,71 @@ const Login = () => {
                                             disabled={isDisabled}
                                         />
                                         {uploadedImages.map((image, index) => (
-                                            <span key={index} className="uploaded-image-name">{image}</span>
+                                            <div key={index} className="uploaded-image-container">
+                                                <img src={image} alt={`uploaded ${index}`} className="uploaded-image" />
+                                                <FaTimesCircle
+                                                    className="remove-image"
+                                                    onClick={() => removeImage(image)}
+                                                />
+                                            </div>
                                         ))}
                                     </div>
-                                </div>
-                                <div className="login-input-group">
-                                    <FaPhone />
-                                    <input
-                                        type="text"
-                                        placeholder="Contact Number"
-                                        value={contactNumber}
-                                        onChange={(e) => setContactNumber(e.target.value)}
-                                        disabled={isDisabled}
-                                    />
-                                </div>
-
-                                <div className="login-input-group">
-                                    <FaEnvelope />
-                                    <input
-                                        type="text"
-                                        placeholder="Address"
-                                        value={address}
-                                        onChange={(e) => setAddress(e.target.value)}
-                                        disabled={isDisabled}
-                                    />
                                 </div>
                             </>
                         )}
                     </>
                 )}
 
-                <div className="login-inputs">
-                    {action === "Login" ? null : (
-                        <div className="login-input-group">
-                            <FaUser />
-                            <input
-                                type="text"
-                                placeholder="Name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                disabled={isDisabled}
-                            />
-                        </div>
-                    )}
-
-                    <div className="login-input-group">
-                        <FaEnvelope />
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            disabled={isDisabled}
-                        />
+                <div className="login-input-group">
+                    <FaUser />
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        disabled={isDisabled}
+                    />
+                </div>
+                <div className="login-input-group">
+                    <FaEnvelope />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        disabled={isDisabled}
+                    />
+                </div>
+                <div className="login-input-group">
+                    <FaLock />
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        disabled={isDisabled}
+                    />
+                    <div className="password-toggle" onClick={togglePasswordVisibility}>
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
                     </div>
+                </div>
 
+                {action === "Sign Up" && (
                     <div className="login-input-group">
                         <FaLock />
                         <input
                             type={showPassword ? "text" : "password"}
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Confirm Password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
                             disabled={isDisabled}
                         />
-                        <span className="password-toggle" onClick={togglePasswordVisibility}>
-                            {showPassword ? <FaEyeSlash /> : <FaEye />}
-                        </span>
                     </div>
+                )}
 
-                    {action === "Sign Up" && (
-                        <div className="login-input-group">
-                            <FaLock />
-                            <input
-                                type={showPassword ? "text" : "password"}
-                                placeholder="Confirm Password"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                                disabled={isDisabled}
-                            />
-                        </div>
-                    )}
-
-                    <div className="login-button-group">
-                        <button className="login-button">{action}</button>
-                    </div>
-                </div>
+                <button className="login-button" disabled={isDisabled}>
+                    {action}
+                </button>
             </div>
         </div>
     );
