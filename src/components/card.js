@@ -1,3 +1,6 @@
+import React from 'react';
+import '../components/card.css';
+
 function Card({
   img,
   title,
@@ -7,19 +10,33 @@ function Card({
   onSelect,
   onMouseEnter,
   onMouseLeave,
-  id, // Add id as a prop
+  id
 }) {
   return (
-    <div className="Lcard">
-      <div className="card__img-container" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <img src={img} className="card__img" alt="Location" />
+    <div
+      className="Lcard"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="card__img-container">
+        <img src={img} alt={title} className="card__img" />
       </div>
       <div className="card__body">
         <h2 className="card__title">{title}</h2>
-        <h3 className="card__price">${price}</h3>
-        <div className="checkbox-location">
-          <input type="checkbox" id={`checkbox-${id}`} checked={isSelected} onChange={() => onSelect(!isSelected)} />
-          <label htmlFor={`checkbox-${id}`}></label>
+        <p className="card__description">{description}</p>
+        
+        <div className="card__footer">
+          <span className="card__price">${price}</span>
+          <div className="toggle-container">
+            <input
+              type="checkbox"
+              id={`toggle-${id}`}
+              className="toggle-input"
+              checked={isSelected}
+              onChange={() => onSelect(!isSelected)}
+            />
+            <label htmlFor={`toggle-${id}`} className="toggle-label"></label>
+          </div>
         </div>
       </div>
     </div>

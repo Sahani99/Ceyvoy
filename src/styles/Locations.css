@@ -1,249 +1,203 @@
-#locations {
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 6fr 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "Lselector map"
-    "lbtn "; 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #f9f9f9, #fff);
+}
 
-.Lselector,
-.map {
-  flex: 1;
+.locations-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-container {
+  grid-column: 2 / 3;
+  grid-row: 1 / 4;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Lselector {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .wrapper {
-  margin-top: 40px;
   display: grid;
-  gap: 100px;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   justify-content: center;
-  height: auto;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 25px));
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  column-gap: 50px;
-}
-
-.pagination .pagebtn {
-  height: 40px;
-  width: 100px;
-  border: 0;
-  padding: 10px 20px;
-  background: #221069;
-  font-size: 1rem;
-  color: #fff;
-  margin: 0 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 20px 20px 20px 20px;
-}
-
-.pagination .pagebtn:hover {
-  background-color: #0285a6;
 }
 
 .Lcard {
   position: relative;
-  border-radius: 20%;
-  background-color: #f8f8f8;
-  transition: transform 0.3s ease;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .Lcard:hover {
   transform: scale(1.05);
-}
-
-.card__img-container {
-  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .Lcard img {
   object-fit: cover;
-  border-radius: 20px 20px 0 0;
   width: 100%;
-  height: auto;
-}
-
-.location-details-content {
-  background-color: yellow;
-  padding: 20px;
-  position: fixed;
-  height: 500px;
-  width: 600px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
-  border-radius: 10px;
-  pointer-events: none; 
-}
-
-.Lcard:hover + .location-details-content {
-  display: flex;
-  overflow: auto;
-}
-
-
-.location-details-content  h2,
-.location-details-content  p,
-.location-details-content  h3 {
-  margin: 10px 0;
-}
-
-.location-details-content  img {
-  height:auto;
-  width:auto;
-  border-radius: 10px;
+  height: 200px;
+  border-radius: 10px 10px 0 0;
 }
 
 .Lcard .card__body {
-  padding: 10px;
+  padding: 15px;
+  text-align: center;
 }
 
 .Lcard .card__title {
-  font-size: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
   margin-bottom: 10px;
+  color: #333;
 }
 
 .Lcard .card__description {
-  font-size: 14px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #666;
 }
 
 .Lcard .card__price {
-  font-size: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.Lcard input[type='checkbox'] {
   margin-top: 10px;
 }
 
-.Lcard .card__price::before {
-  content: "$";
-  font-size: 16px;
-  position: relative;
-  top: -10px;
-  padding-right: 10px;
-}
-/* check box */
-.checkbox-location {
-  width: 100px;
-	height: 50px;
-	background: #34495e;
-	margin: 20px 20px;
-  border-radius: 25px;
-  display:inline-block;
-  cursor:cell;
-  position: relative;
-}
-.checkbox-location .label{
-  -webkit-transition: all .4s ease;
-	-moz-transition: all .4s ease;
-	-o-transition: all .4s ease;
-	-ms-transition: all .4s ease;
-	transition: all .4s ease;
-  z-index: 2;
-  position: absolute;
-  margin-left: -23px;
-  width: 50px;
-  height: 50px;
-  background-color: #2ecc71;
-  border-radius: 25px;
-  cursor: pointer;
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-.checkbox-location input[type="checkbox"] {
-  visibility: hidden;
-}
-
-.checkbox-location input[type=checkbox] +  label {
-  z-index:2;
-  position:absolute;
-  margin-left:-15px;
-  width:50px;
-  height:50px;
-  background-color:#4ccd82;
-  border-radius:25px;
-  cursor: pointer;
-}
-
-.checkbox-location input[type=checkbox]:checked + label{
-  z-index:2;
-  background-color:#e74c3c;
-  position:absolute;
-  margin-left:-13px;
-  width:100px;
-  height:50px;
-  border-radius:25px ;
-  cursor: pointer;
-}
-
-/* confirm btn */
-.lbtn{
-  align-content: center; 
-  background-color: #98BD9D; 
-  grid-row-start: 2;
-  grid-column-start: 1;
-  grid-row-end: 3;
-  grid-column-end: 3;
-}
-
-.lbtn .confirm-btn {
-  padding: 10px 20px;
-  background: #221069;
-  color: white;
+.pagebtn {
+  background-color: #097f88;
+  color: #fff;
   border: none;
+  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 20%;
+  transition: background-color 0.3s ease;
+}
+
+.pagebtn:hover {
+  background-color: #075f66;
+}
+
+.pagebtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.confirm-btn {
+  background-color: #093f55;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.confirm-btn:hover {
+  background-color: #0c6880;
+}
+
+.selected-list {
+  margin-top: 20px;
+}
+
+.selected-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.selected-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.remove-icon {
+  cursor: pointer;
+  color: #ff0000;
+}
+
+.location-details-popup {
+  position: fixed;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px;
+  text-align: center;
+  transform: translate(-50%, -50%);
   transition: all 0.3s ease;
-  border-radius: 20px 20px 20px 20px;
+ 
 }
 
-.lbtn .confirm-btn:hover {
-  background-color: #0285a6;
+.location-details-popup img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 10px;
 }
 
-
-
-.blurred .Lselector,
-.blurred .map {
-  filter: blur(5px);
+.location-details-popup h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-/* Media query for mobile view */
-@media screen and (max-width: 768px) {
-  #locations {
-    flex-direction: column-reverse;
-  }
+.location-details-popup p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #666;
+}
 
-  .wrapper {
-    grid-template-columns: 1fr;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.location-details-popup h3 {
+  font-size: 1.1rem;
+  color: #22aec7;
+  font-weight: bold;
+}
 
-  .Lselector {
-    justify-content: center;
-  }
-
-  .Lcard {
-    box-shadow: 0 0 10px 5px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    font-size: medium;
-    background-color: #fff;
-    text-align: center;
-    width: 50%;
-  }
+.lbtn {
+  margin-top: 20px;
+  text-align: center;
 }
