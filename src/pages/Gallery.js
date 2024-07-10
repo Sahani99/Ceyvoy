@@ -75,7 +75,8 @@ const Gallery = () => {
           </li>
           <li data-num="1">
             <img
-              src={require("../Images/10.jpg")}
+            // img 10.jpg
+              src={require("../Images/11.png")}
               alt="Attraction 4"
               className="img-gal"
             />
@@ -139,7 +140,8 @@ const Gallery = () => {
           </li>
           <li data-num="2">
             <img
-              src={require("../Images/1.jpg")}
+            // img 1.jpg
+              src={require("../Images/3.jpeg")}
               alt="Attraction 8"
               className="img-gal"
             />
@@ -203,7 +205,8 @@ const Gallery = () => {
           </li>
           <li data-num="3">
             <img
-              src={require("../Images/12.jpg")}
+                        // img 12.jpg
+              src={require("../Images/14.jpg")}
               alt="Attraction 12"
               className="img-gal"
             />

@@ -1,28 +1,59 @@
 #locations {
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 6fr 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
+  display: grid;
+  max-height: 100%; /* Adjusted to ensure it doesn't push the footer */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
     "Lselector map"
-    "lbtn "; 
+    "lbtn lbtn";
 }
 
-
-.Lselector,
-.map {
-  flex: 1;
+.Lselector {
+  grid-area: Lselector;
   padding: 20px;
   border: 1px solid #ccc;
 }
 
+.map {
+  grid-area: map;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.lbtn {
+  align-content: center;
+  background-color: #98BD9D;
+  grid-area: lbtn;
+  height: 300px; /* Adjust the height as needed */
+  overflow-y: auto; /* Add scroll if content overflows */
+}
+
+.lbtn .confirm-btn {
+  padding: 10px 20px;
+  background: #221069;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 20%;
+  transition: all 0.3s ease;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.lbtn .confirm-btn:hover {
+  background-color: #0285a6;
+}
+
+
+/* Additional styles */
 .wrapper {
   margin-top: 40px;
   display: grid;
   gap: 100px;
   justify-content: center;
   height: auto;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 25px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .pagination {
@@ -94,14 +125,13 @@
   overflow: auto;
 }
 
-
-.location-details-content  h2,
-.location-details-content  p,
-.location-details-content  h3 {
+.location-details-content h2,
+.location-details-content p,
+.location-details-content h3 {
   margin: 10px 0;
 }
 
-.location-details-content  img {
+.location-details-content img {
   height:auto;
   width:auto;
   border-radius: 10px;
@@ -109,11 +139,11 @@
 
 .Lcard .card__body {
   padding: 10px;
+  margin-bottom:auto;
 }
 
 .Lcard .card__title {
   font-size: 20px;
-  margin-bottom: 10px;
 }
 
 .Lcard .card__description {
@@ -132,96 +162,54 @@
   top: -10px;
   padding-right: 10px;
 }
-/* check box */
-.checkbox-location {
-  width: 100px;
-	height: 50px;
-	background: #34495e;
-	margin: 20px 20px;
+
+/* Check box */
+.checkbox-container {
+  width: 70px;
+  height: 35px;
+  background: #34495e;
+  margin: 20px 20px;
   border-radius: 25px;
   display:inline-block;
-  cursor:cell;
   position: relative;
 }
-.checkbox-location .label{
-  -webkit-transition: all .4s ease;
-	-moz-transition: all .4s ease;
-	-o-transition: all .4s ease;
-	-ms-transition: all .4s ease;
-	transition: all .4s ease;
-  z-index: 2;
-  position: absolute;
-  margin-left: -23px;
-  width: 50px;
-  height: 50px;
-  background-color: #2ecc71;
-  border-radius: 25px;
-  cursor: pointer;
-}
 
-.checkbox-location input[type="checkbox"] {
+.checkbox-container input[type="checkbox"] {
   visibility: hidden;
 }
 
-.checkbox-location input[type=checkbox] +  label {
+.checkbox-container input[type=checkbox] + label {
   z-index:2;
   position:absolute;
   margin-left:-15px;
-  width:50px;
-  height:50px;
-  background-color:#4ccd82;
+  width: 35px;
+  height: 35px;
+  background-color:#b40808;
   border-radius:25px;
   cursor: pointer;
+  transition:all 0.5s ;
 }
 
-.checkbox-location input[type=checkbox]:checked + label{
+.checkbox-container input[type=checkbox]:checked + label {
   z-index:2;
-  background-color:#e74c3c;
+  background-color:#04cab3;
   position:absolute;
   margin-left:-13px;
-  width:100px;
-  height:50px;
+  width: 70px;
+  height: 35px;
   border-radius:25px ;
   cursor: pointer;
 }
 
-/* confirm btn */
-.lbtn{
-  align-content: center; 
-  background-color: #98BD9D; 
-  grid-row-start: 2;
-  grid-column-start: 1;
-  grid-row-end: 3;
-  grid-column-end: 3;
-}
-
-.lbtn .confirm-btn {
-  padding: 10px 20px;
-  background: #221069;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 20%;
-  transition: all 0.3s ease;
-  border-radius: 20px 20px 20px 20px;
-}
-
-.lbtn .confirm-btn:hover {
-  background-color: #0285a6;
-}
-
-
-
-.blurred .Lselector,
-.blurred .map {
-  filter: blur(5px);
-}
-
-/* Media query for mobile view */
-@media screen and (max-width: 768px) {
+/* Responsive styles */
+@media screen and (max-width: 668px) {
   #locations {
-    flex-direction: column-reverse;
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto auto auto; 
+    grid-template-areas: 
+      "map"
+      "Lselector"
+      "lbtn";
   }
 
   .wrapper {
@@ -244,6 +232,46 @@
     font-size: medium;
     background-color: #fff;
     text-align: center;
-    width: 50%;
+    width: 70%; 
+  }
+
+  .lbtn .confirm-btn {
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* Center align the confirm button on mobile */
+  }
+
+  .location-details-content {
+    background-color: yellow;
+    padding: 20px;
+    position: fixed;
+    height: 300px;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    border-radius: 10px;
+    pointer-events: none; 
+  }
+
+  .checkbox-container {
+    width: 50px;
+    height: 25px;
+    margin: 20px 20px;
+  }
+  
+  .checkbox-container input[type=checkbox] + label {
+    margin-left:-32px;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .checkbox-container input[type=checkbox]:checked + label {
+    margin-left:-32px;
+    width: 50px;
+    height: 25px;
   }
 }
