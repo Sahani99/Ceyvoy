@@ -1,23 +1,20 @@
-.Gallery-content {
+.gallery-main-content {
+  background-color: #e5e4e2;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: #e5e4e2;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background-color: #e5e4e2;
-  min-height: 100vh;
   font-family: Arial, sans-serif;
 }
 
-.Gallery-content > div {
+.gallery-main-content > div {
   width: 100%;
   max-width: 1200px;
 }
 
-.gallery-nav {
+.gallery-navbar-nav {
   display: flex;
   justify-content: center;
   font-family: "Catamaran", sans-serif;
@@ -26,13 +23,12 @@
   flex-wrap: wrap;
 }
 
-.gallery-nav > li {
+.gallery-navbar-nav > li {
   padding: 0;
   min-width: 100px;
-  list-style: none;
 }
 
-.gallery-nav > li > a {
+.gallery-navbar-nav > li > a {
   padding: 15px 35px;
   display: block;
   background-color: #fff;
@@ -45,19 +41,19 @@
   transition: 0.5s all ease-in-out;
 }
 
-.gallery-nav > li > a:hover,
-.gallery-nav > li.uk-active > a {
+.gallery-navbar-nav > li > a:hover,
+.gallery-navbar-nav > li.uk-active > a {
   background-color: #808080;
   color: #fff;
 }
 
-.img-gallery-container > li {
+.gallery-img-gallery-container > li {
   position: relative;
   padding: 10px;
   margin-top: 5px !important;
 }
 
-.img-gal {
+.gallery-img-gal {
   height: 415px;
   width: 100%;
   object-fit: cover;
@@ -65,11 +61,11 @@
   border-radius: 6px;
 }
 
-.img-gallery-container > li:hover > img {
+.gallery-img-gallery-container > li:hover > img {
   filter: brightness(0.4) blur(3px);
 }
 
-.float-gallery-content {
+.gallery-float-gallery-content {
   position: absolute;
   width: calc(100% - 20px); /* Adjusted to fit within the padding */
   z-index: -1;
@@ -89,18 +85,18 @@
   box-sizing: border-box; /* Ensure padding is included in width */
 }
 
-.img-gallery-container > li:hover .float-gallery-content {
+.gallery-img-gallery-container > li:hover .gallery-float-gallery-content {
   bottom: 20px;
   opacity: 1;
   visibility: visible;
   z-index: 9;
 }
 
-.uk-block {
+.gallery-block {
   display: block;
 }
 
-.float-gallery-content .content {
+.gallery-float-gallery-content .gallery-content {
   padding: 8px 15px;
   display: flex;
   flex-direction: column;
@@ -109,7 +105,7 @@
   width: 100%;
 }
 
-.float-gallery-content .content > a {
+.gallery-float-gallery-content .gallery-content > a {
   color: #212121;
   position: relative;
   bottom: -50px;
@@ -117,11 +113,11 @@
   transition: all 0.5s;
 }
 
-.float-gallery-content .content > a:hover {
+.gallery-float-gallery-content .gallery-content > a:hover {
   color: #d3d3d3;
 }
 
-.gallery-btn {
+.gallery-button {
   border: 0;
   height: 100%;
   padding: 5px 15px;
@@ -134,7 +130,7 @@
   transition: all 0.5s;
 }
 
-.highlight {
+.gallery-highlight {
   color: #7b68ee;
   font-weight: 600;
   position: relative;
@@ -145,87 +141,87 @@
   box-sizing: border-box;
 }
 
-.img-gallery-container > li:hover .highlight {
+.gallery-img-gallery-container > li:hover .gallery-highlight {
   left: 0;
   opacity: 1;
   transition-delay: 0.1s;
 }
 
-.img-gallery-container > li:hover button {
+.gallery-img-gallery-container > li:hover .gallery-button {
   right: 0;
   opacity: 1;
   transition-delay: 0.1s;
 }
 
-.img-gallery-container > li:hover .content > a {
+.gallery-img-gallery-container > li:hover .gallery-content > a {
   bottom: 0;
   opacity: 1;
   transition-delay: 0.1s;
 }
 
 @media screen and (max-width: 1100px) {
-  .img-gal {
+  .gallery-img-gal {
     height: 300px;
   }
 
-  .gallery-nav > li > a {
+  .gallery-navbar-nav > li > a {
     font-size: 0.9rem;
     padding: 10px 25px;
   }
 
-  .highlight {
+  .gallery-highlight {
     font-size: 0.9rem;
   }
 
-  .float-gallery-content .content {
+  .gallery-float-gallery-content .gallery-content {
     padding: 8px 10px;
   }
 }
 
 @media screen and (max-width: 650px) {
-  .img-gal {
+  .gallery-img-gal {
     height: 225px;
   }
 
-  .gallery-nav {
+  .gallery-navbar-nav {
     gap: 10px;
   }
 
-  .gallery-nav > li > a {
+  .gallery-navbar-nav > li > a {
     font-size: 0.8rem;
     padding: 8px 20px;
   }
 
-  .highlight {
+  .gallery-highlight {
     font-size: 0.8rem;
   }
 
-  .float-gallery-content .content {
+  .gallery-float-gallery-content .gallery-content {
     padding: 5px 8px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .img-gal {
+  .gallery-img-gal {
     height: 125px;
   }
 
-  .gallery-nav {
+  .gallery-navbar-nav {
     flex-direction: column;
     align-items: center;
   }
 
-  .gallery-nav > li > a {
+  .gallery-navbar-nav > li > a {
     font-size: 0.7rem;
     padding: 6px 15px;
     margin-bottom: 5px;
   }
 
-  .highlight {
+  .gallery-highlight {
     font-size: 0.7rem;
   }
 
-  .float-gallery-content .content {
+  .gallery-float-gallery-content .gallery-content {
     padding: 4px 6px;
   }
 }

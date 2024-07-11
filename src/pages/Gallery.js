@@ -5,9 +5,9 @@ import "../styles/Gallery.css";
 
 const Gallery = () => {
   return (
-    <div className="main-content">
+    <div className="gallery-main-content">
       <div uk-filter="target: .js-filter">
-        <ul className="uk-navbar-nav">
+        <ul className="gallery-navbar-nav uk-navbar-nav">
           <li className="uk-active" uk-filter-control="*">
             <a href="section">All</a>
           </li>
@@ -23,199 +23,234 @@ const Gallery = () => {
         </ul>
 
         <ul
-          className="img-gallery-container js-filter uk-child-width-1-2 uk-child-width-1-4@m uk-text-center"
+          className="gallery-img-gallery-container js-filter uk-child-width-1-2 uk-child-width-1-4@m uk-text-center"
           uk-grid="true"
         >
           <li data-num="1">
             <img
-              src={require("../Images/6.jpeg")}
+              src={require("../assets/gal6.jpeg")}
               alt="Attraction 1"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
                   Tea garden | Nuwara Eliya
                 </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="1">
             <img
-              src={require("../Images/3.jpeg")}
+              src={require("../assets/gal3.jpeg")}
               alt="Attraction 2"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">Water Fall | Badulla</span>
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
+                  Water Fall | Badulla
+                </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="1">
             <img
-              src={require("../Images/7.jpeg")}
+              src={require("../assets/gal7.jpeg")}
               alt="Attraction 3"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">Beach | Trincomalee</span>
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
+                  Beach | Trincomalee
+                </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="1">
             <img
-            // img 10.jpg
-              src={require("../Images/11.png")}
+              src={require("../assets/gal10.jpg")}
               alt="Attraction 4"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">Mountain | Ella</span>
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
+                  Mountain | Ella
+                </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="2">
             <img
-              src={require("../Images/8.jpeg")}
+              src={require("../assets/gal8.jpeg")}
               alt="Attraction 5"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
                   Temple | Anuradhapura
                 </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="2">
             <img
-              src={require("../Images/9.jpg")}
+              src={require("../assets/gal9.jpg")}
               alt="Attraction 6"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">Sigiriya | Dambulla</span>
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
+                  Sigiriya | Dambulla
+                </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="2">
             <img
-              src={require("../Images/11.png")}
+              src={require("../assets/gal11.png")}
               alt="Attraction 7"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
                   Esala Perahera | Kandy
                 </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="2">
             <img
-            // img 1.jpg
-              src={require("../Images/3.jpeg")}
+              src={require("../assets/gal1.jpg")}
               alt="Attraction 8"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">Adam's Peak | Hatton</span>
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
+                  Adam's Peak | Hatton
+                </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="3">
             <img
-              src={require("../Images/13.jpg")}
+              src={require("../assets/gal13.jpg")}
               alt="Attraction 9"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">Cityscape | Colombo</span>
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
+                  Cityscape | Colombo
+                </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="3">
             <img
-              src={require("../Images/5.jpeg")}
+              src={require("../assets/gal5.jpeg")}
               alt="Attraction 10"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
                   Nine arch bridge | Badulla
                 </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="3">
             <img
-              src={require("../Images/14.jpg")}
+              src={require("../assets/gal14.jpg")}
               alt="Attraction 11"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
                   white-water rafting | Kitulgala
                 </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
           <li data-num="3">
             <img
-                        // img 12.jpg
-              src={require("../Images/14.jpg")}
+              src={require("../assets/gal12.jpg")}
               alt="Attraction 12"
-              className="img-gal"
+              className="gallery-img-gal"
             />
-            <div className="float-gallery-content">
-              <div className="content uk-text-left">
-                <span className="highlight uk-block">Galle Fort | Galle</span>
+            <div className="gallery-float-gallery-content">
+              <div className="gallery-content uk-text-left">
+                <span className="gallery-highlight uk-block">
+                  Galle Fort | Galle
+                </span>
               </div>
               <div className="content-btn">
-                <button type="button">&#8594;</button>
+                <button type="button" className="gallery-button">
+                  &#8594;
+                </button>
               </div>
             </div>
           </li>
