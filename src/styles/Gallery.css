@@ -1,23 +1,20 @@
-body {
-  background-color: #e5e4e2;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-}
-
-.main-content {
+.Gallery-content {
   display: flex;
   justify-content: center;
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
+  background-color: #e5e4e2;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
-.main-content > div {
+.Gallery-content > div {
   width: 100%;
   max-width: 1200px;
 }
 
-.uk-navbar-nav {
+.gallery-nav {
   display: flex;
   justify-content: center;
   font-family: "Catamaran", sans-serif;
@@ -26,12 +23,13 @@ body {
   flex-wrap: wrap;
 }
 
-.uk-navbar-nav > li {
+.gallery-nav > li {
   padding: 0;
   min-width: 100px;
+  list-style: none;
 }
 
-.uk-navbar-nav > li > a {
+.gallery-nav > li > a {
   padding: 15px 35px;
   display: block;
   background-color: #fff;
@@ -44,8 +42,8 @@ body {
   transition: 0.5s all ease-in-out;
 }
 
-.uk-navbar-nav > li > a:hover,
-.uk-navbar-nav > li.uk-active > a {
+.gallery-nav > li > a:hover,
+.gallery-nav > li.uk-active > a {
   background-color: #808080;
   color: #fff;
 }
@@ -120,7 +118,7 @@ body {
   color: #d3d3d3;
 }
 
-button {
+.gallery-btn {
   border: 0;
   height: 100%;
   padding: 5px 15px;
@@ -167,7 +165,7 @@ button {
     height: 300px;
   }
 
-  .uk-navbar-nav > li > a {
+  .gallery-nav > li > a {
     font-size: 0.9rem;
     padding: 10px 25px;
   }
@@ -186,11 +184,11 @@ button {
     height: 225px;
   }
 
-  .uk-navbar-nav {
+  .gallery-nav {
     gap: 10px;
   }
 
-  .uk-navbar-nav > li > a {
+  .gallery-nav > li > a {
     font-size: 0.8rem;
     padding: 8px 20px;
   }
@@ -209,12 +207,12 @@ button {
     height: 125px;
   }
 
-  .uk-navbar-nav {
+  .gallery-nav {
     flex-direction: column;
     align-items: center;
   }
 
-  .uk-navbar-nav > li > a {
+  .gallery-nav > li > a {
     font-size: 0.7rem;
     padding: 6px 15px;
     margin-bottom: 5px;

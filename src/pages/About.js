@@ -1,12 +1,12 @@
 import React from 'react';
-import '../styles/Aboutstyle.css'; 
+import '../styles/About.css'; 
 
 function About() {
   return (
-    <div className="section">
-      <div className="container">
+    <div className="abt-section">
+      <div className="abt-container">
         <h1>About Us</h1>
-        <div className="content-section">
+        <div className="abt-content-section">
           <h3>Welcome to CeyVoy</h3>
           <p>
             Your ultimate travel companion for exploring the wonders of Sri Lanka.
@@ -18,7 +18,7 @@ function About() {
             CeyVoy is here to ensure that your travel plans are seamless, enjoyable, and unforgettable.
             Join us on this journey and discover the beauty of Sri Lanka with personalized precision and care.
           </p>
-          <div className="button">
+          <div className="abt-button">
             <a href="#">Read More</a>
           </div>
         </div>

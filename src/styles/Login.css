@@ -1,5 +1,5 @@
 .login-page {
-    background-image: url('../assets/bg1.jpg');
+    background-image: url('../assets/bg9.jpg');
     background-size: cover;
     background-position: center;
     font-family: 'Verdana, Geneva, Tahoma, sans-serif';
@@ -162,13 +162,13 @@
     cursor: not-allowed;
 }
 
-.checkbox-container {
+.Login-checkbox-container {
     display: flex;
     gap: 10px;
     margin-top: 5px;
 }
 
-.checkbox-container input[type="checkbox"] {
+.Login-checkbox-container input[type="checkbox"] {
     
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -180,15 +180,15 @@
     cursor: pointer;
 }
 
-.checkbox-container input[type="checkbox"]:checked {
+.Login-checkbox-container input[type="checkbox"]:checked {
     background-color: #007B8F;
 }
 
-.checkbox-container input[type="checkbox"]:checked + label {
+.Login-checkbox-container input[type="checkbox"]:checked + label {
     color: white;
 }
 
-.checkbox-container label {
+.Login-checkbox-container label {
     font-size: 14px;
     cursor: pointer;
 }
