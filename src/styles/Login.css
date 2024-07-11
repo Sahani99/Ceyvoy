@@ -1,186 +1,194 @@
-
 .login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 130vh;
     background-image: url('../assets/bg9.jpg');
     background-size: cover;
     background-position: center;
-    
+    font-family: 'Verdana, Geneva, Tahoma, sans-serif';
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-container {
-    width: 450px;
-    padding: 20px ;
-    background: rgba(245, 245, 245, 0.514);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+    gap: 15px;
+}
+
+.login-container:hover {
+    transform: scale(1.02);
 }
 
 .login-header {
     text-align: center;
-    margin-bottom: 20px;
-    color: #02293f;
+    margin-bottom: 1rem;
 }
 
-.login-text {
-    font-size: 24px;
+.login-header .login-text {
+    font-size: 1.8rem;
     font-weight: bold;
+    color: #0F646A;
 }
 
-.login-underline {
-    width: 50px;
+.login-header .login-underline {
+    width: 80px;
     height: 3px;
-    background-color: #02293f;
-    margin: 10px auto;
-}
-
-.toggle-action {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-   
-}
-
-.toggle-action button {
-    background: #076581;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 50px;
-    width: 90px;
-}
-
-.toggle-action button:hover {
-    background: #a6c1ce;
-}
-
-.login-role-selection {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.login-card-group {
-    display: flex;
-    justify-content: space-between;
-}
-
-.login-card {
-    background: #077fc5;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    margin: 0 10px;
-    cursor: pointer;
+    background: #0F646A;
     border-radius: 15px;
-    width: 145px;
-}
-
-
-.login-card.selected {
-    border-color: #73c6ce;
-    background-color: #528e94;
-    color: #fff;
-}
-
-.role-warning {
-    text-align: center;
-    color: rgb(233, 11, 11);
-    margin-bottom: 20px;
-    
+    margin: 0.5rem auto;
 }
 
 .login-inputs {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .login-input-group {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    position: relative;
-}
-
-.login-input-group input {
     width: 100%;
-    padding: 10px;
+    padding: 0.7rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-left: 10px;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease-in-out;
+    background: #e0f7f7;
 }
 
-.password-toggle {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
+.login-input-group:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.checkbox-container {
+.login-input-group input,
+.login-input-group select {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    color: #333;
+}
+
+.login-input-group i {
+    margin-right: 0.5rem;
+    color: #0F646A;
+}
+
+.login-role-selection {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Adds space between each checkbox block */
+    gap: 10px;
 }
 
-.checkbox-container div {
+.login-card-group {
     display: flex;
-    align-items: center;
-    margin-right: 20px; /* Adjust margin as needed */
+    gap: 10px;
+    justify-content: center;
 }
 
-.checkbox-container input[type="checkbox"] {
-    margin-right: 5px; /* Adjust margin between checkbox and label */
-}
-
-
-
-.login-input-group h4 {
-    margin: 0 10px 10px 0; /* Adjust margin around the heading */
-    font-size: 18px; /* Adjust font size for the heading */
-    color: #5a586d;
-    padding-left: 10px;
-    font-weight:600;
-    
-}
-.upload-container{
-    padding-left :10px; 
-    height: 5px;
-    border-radius: 10px;
-}
-.upload-label {
-    background: #fbffff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #6e696e;
-    align-items: center;
-    padding-left: 5px;
-}
-
-.uploaded-image-name {
-    display: block;
-    margin-top: 8px;
-    color: rgb(26, 35, 41);
-    font-size: 12px;
-    padding-left: 10px;
-}
-
-.login-button-group {
+.login-card {
+    flex: 1;
+    padding: 0.7rem;
     text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    background: #e0f7f7;
+    color: #333;
+}
+
+.login-card:hover {
+    transform: scale(1.05);
+    background: #0F646A;
+    color: white;
+}
+
+.login-card.selected {
+    background: #0F646A;
+    color: white;
+}
+
+.login-forgot-password {
+    text-align: center;
+    margin: 15px 0;
+    color: #0F646A;
+    font-size: 12px;
+}
+
+.login-forgot-password span {
+    color: #007B8F;
+    cursor: pointer;
+}
+
+.login-submit-container {
+    display: flex;
+    justify-content: space-around;
     margin-top: 20px;
 }
 
-.login-button {
-    background: #097f88;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
+.login-submit {
+    flex: 1;
+    padding: 0.5rem;
+    text-align: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    color: white;
+    background: #0F646A;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
-    border-radius: 50px;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.login-button:hover {
-    background: #075e66;
+.login-submit:hover {
+    background: #007B8F;
+    transform: scale(1.05);
+}
+
+.login-submit.gray {
+    background: gray;
+    cursor: not-allowed;
+}
+
+.Login-checkbox-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.Login-checkbox-container input[type="checkbox"] {
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.Login-checkbox-container input[type="checkbox"]:checked {
+    background-color: #007B8F;
+}
+
+.Login-checkbox-container input[type="checkbox"]:checked + label {
+    color: white;
+}
+
+.Login-checkbox-container label {
+    font-size: 14px;
+    cursor: pointer;
 }
