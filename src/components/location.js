@@ -6,35 +6,49 @@ const locations = [
     price: "45.00",
   },
   {
-    img: require("../assets/bg1.jpg"),
+    img: require("../assets/bg2.jpg"),
     title: "Kalutara",
     description: "Fall Favorite • Boots",
     price: "45.00",
   },
   {
-      img: require("../assets/bg2.jpg"),
+      img: require("../assets/bg4.jpg"),
       title: "Kandy",
       description: "Fall Favorite • Boots",
       price: "45.00",
     },
     {
-      img: require("../assets/bg3.jpg"),
+      img: require("../assets/bg5.jpg"),
       title: "Galle",
       description: "Fall Favorite • Boots",
       price: "45.00",
     },
     {
-      img: require("../assets/bg11.jpg"),
+      img: require("../assets/bg6.jpg"),
       title: "Jaffna",
       description: "Fall Favorite • Boots",
       price: "45.00",
     },
     {
-      img: require("../assets/bg1.jpg"),
+      img: require("../assets/bg7.jpg"),
       title: "Gampaha",
       description: "Fall Favorite • Boots",
       price: "45.00",
     },
+    {
+      img: require("../assets/bg9.jpg"),
+      title: "Mirissa",
+      description: "Fall Favorite • Boots",
+      price: "45.00",
+    },
+    {
+      img: require("../assets/bg10.jpg"),
+      title: "Trincomalee",
+      description: "Fall Favorite • Boots",
+      price: "45.00",
+    },
+
+
   // Add more location objects as needed
 ];
 

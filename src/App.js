@@ -12,6 +12,7 @@ import Login from './pages/Login.js';
 import CurrencyConverter from './pages/CurrencyConverter.js';
 import About from './pages/About.js';
 import Contact from './pages/Contact.js';
+import Gallery from './pages/Gallery.js';
 // import Test from './pages/Test.js';
 
 
@@ -27,7 +28,7 @@ function App() {
           <Route path="/Home.js" element={<Home />} />
           <Route path="/Questionnaire.js" element={<Questionnaire />} />
           <Route path="/Locations.js" element={<Locations />} />
-          
+          <Route path="/Gallery.js" element={<Gallery />} />
           <Route path="/Event.js" element={<Event />} />
           <Route path="/Login.js" element={<Login />} />
           <Route path="/Currency" element={<CurrencyConverter />} />
