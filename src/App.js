@@ -13,6 +13,7 @@ import CurrencyConverter from './pages/CurrencyConverter.js';
 import About from './pages/About.js';
 import Contact from './pages/Contact.js';
 import Gallery from './pages/Gallery.js';
+import AddLocations from './pages/AddLocations.js';
 // import Test from './pages/Test.js';
 
 
@@ -34,6 +35,8 @@ function App() {
           <Route path="/Currency" element={<CurrencyConverter />} />
           <Route path="/About.js" element={<About />} />
           <Route path="/Contact.js" element={<Contact />} />
+          <Route path="/AddLocations.js" element={< AddLocations/>} />
+
 
           {/* <Route path="/Test" element={<Test />} /> */}
           <Route path="*" element={<Nopage />} />
