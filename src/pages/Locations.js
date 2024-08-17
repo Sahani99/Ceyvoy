@@ -3,20 +3,19 @@ import axios from 'axios';
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-geocoder.css';
+
 import Card from '../components/card.js';
 import '../styles/Locations.css';
-import locationsData from '../components/location'; 
 import { FaTimes } from 'react-icons/fa';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, Link } from 'react-router-dom';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2V5dm95IiwiYSI6ImNseW1uNTV0ZDBkemwya3Fya2hmc3p1b3QifQ.MA5PmGoZ9MUqmCcKG2nOhQ';
 
 function Locations() {
-  const [viewport, ] = useState({
+  const [viewport] = useState({
     latitude: 7.8731,
     longitude: 80.7718,
     zoom: 7,
@@ -33,6 +32,7 @@ function Locations() {
   const [durations, setDurations] = useState([]);
   const [popupPosition, setPopupPosition] = useState({ top: '50%', left: '50%' });
   const [selectedLocation, setSelectedLocation] = useState(null);
+  const [locationsData, setLocationsData] = useState([]);
   const itemsPerPage = 4;
   const totalPages = Math.ceil(locationsData.length / itemsPerPage);
   const navigate = useNavigate();
@@ -42,22 +42,25 @@ function Locations() {
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [viewport.longitude, viewport.latitude],
-      zoom: viewport.zoom
+      zoom: viewport.zoom,
     });
 
     mapRef.current = map;
 
-    map.on('load', () => {
-      try {
-        const geocoder = new MapboxGeocoder({
-          accessToken: mapboxgl.accessToken,
-          mapboxgl: mapboxgl,
-        });
+    axios.get('http://localhost:3001/Locations')
+      .then(response => {
+        const fetchedLocations = response.data;
+        setLocationsData(fetchedLocations);
 
-        geocoderContainerRef.current.appendChild(geocoder.onAdd(map));
+        map.on('load', () => {
+          const geocoder = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl,
+          });
 
-        if (locationsData) {
-          locationsData.forEach((location, index) => {
+          geocoderContainerRef.current.appendChild(geocoder.onAdd(map));
+
+          fetchedLocations.forEach((location, index) => {
             if (location.latitude && location.longitude) {
               const el = document.createElement('div');
               el.className = 'marker';
@@ -70,11 +73,11 @@ function Locations() {
               console.error(`Invalid location data: ${location.title}`, location);
             }
           });
-        }
-      } catch (error) {
-        console.error('Error initializing geocoder or adding markers:', error);
-      }
-    });
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
 
     return () => map.remove();
   }, [viewport]);
@@ -139,7 +142,7 @@ function Locations() {
     const coordinates = selectedCards.map(card => [card.longitude, card.latitude]).join(';');
     try {
       const response = await axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${coordinates}?access_token=${mapboxgl.accessToken}`);
-      
+
       if (response.data && response.data.durations && response.data.distances) {
         const durationsData = response.data.durations[0].slice(1).map(duration => duration / 3600); // Convert seconds to hours
         const distancesData = response.data.distances[0].slice(1).map(distance => distance / 1000); // Convert meters to kilometers
@@ -176,7 +179,7 @@ function Locations() {
         <div className="map-container" ref={mapContainerRef} style={{ width: '100%', height: '100vh' }}>
           <div ref={geocoderContainerRef} id="geocoder" className="geocoder-container" />
         </div>
-        
+
         <div className="Lselector">
           <div className="wrapper">
             {visibleImages.map((item, index) => (
@@ -215,97 +218,43 @@ function Locations() {
         {selectedLocation && (
           <div className="location-details-popup" style={{ top: popupPosition.top, left: popupPosition.left }}>
             <img src={selectedLocation.img} alt={selectedLocation.title} />
-            <h2>{selectedLocation.title}</h2>
+            <h3>{selectedLocation.title}</h3>
             <p>{selectedLocation.description}</p>
-            <h3>${selectedLocation.price}</h3>
+            <button onClick={handleAddLocation}>Add Location</button>
+            <Link to="/Feedback.js">
+              <button>Feedback</button>
+            </Link>
           </div>
         )}
 
-        <div className="lbtn">
-          
-          <div className="selected-list">
-            <h3>Selected Places:</h3>
-            <ul>
-              {selectedCards.map((card, index) => (
-                <DraggableListItem
-                  key={index}
-                  index={index}
-                  card={card}
-                  moveCard={moveCard}
-                  handleRemoveSelected={handleRemoveSelected}
-                  distance={distances[index]}
-                  duration={durations[index]}
-                />
-              ))}
-            </ul>
-          </div>
-          <button onClick={handleConfirm} className="L-confirm-btn">
+        <div className="confirm-section">
+          <h3>Selected Places</h3>
+          <ul>
+            {selectedCards.map((card, index) => (
+              <li key={index} className="selected-card-item">
+                {card.title}
+                <span className="card-order">{card.order}</span>
+                <button className="remove-button" onClick={() => handleRemoveSelected(index)}>
+                  <FaTimes />
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button onClick={handleConfirm} className="confirm-button">
             Confirm Selection
           </button>
+          <div className="distance-duration-info">
+            {distances.map((distance, index) => (
+              <div key={index}>
+                <p>Distance: {distance.toFixed(2)} km</p>
+                <p>Duration: {durations[index].toFixed(2)} hours</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="distance-duration-container">
-          <h3>Distance and Duration:</h3>
-          {selectedCards.slice(1).map((card, index) => (
-              <li key={index} className="distance-duration-item">
-                {selectedCards[index].title} to {card.title}: 
-                {distances[index]} km, {durations[index]} hours
-              </li>
-    ))}
-
-        </div>
-        <button onClick={handleAddLocation} className="add-location-btn">
-          Add Location
-        </button>
       </div>
     </DndProvider>
   );
 }
 
-const DraggableListItem = ({ card, index, moveCard, handleRemoveSelected, distance, duration }) => {
-  const ref = useRef(null);
-  const [, drop] = useDrop({
-    accept: 'card',
-    hover(item) {
-      if (!ref.current) {
-        return;
-      }
-      const dragIndex = item.index;
-      const hoverIndex = index;
-
-      if (dragIndex === hoverIndex) {
-        return;
-      }
-
-      moveCard(dragIndex, hoverIndex);
-      item.index = hoverIndex;
-    },
-  });
-
-  const [{ isDragging }, drag] = useDrag({
-    type: 'card',
-    item: { index },
-    collect: monitor => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-
-  drag(drop(ref));
-
-  return (
-    <li ref={ref} style={{ opacity: isDragging ? 0.5 : 1 }}>
-      {card.title}
-      <FaTimes
-        className="L-remove-icon"
-        onClick={() => handleRemoveSelected(index)}
-      />
-      {distance && duration && (
-        <p className="distance-duration-text">
-          Distance: {distance.toFixed(2)} km, Duration: {duration.toFixed(2)} hours
-        </p>
-      )}
-    </li>
-  );
-};
-
 export default Locations;
-
