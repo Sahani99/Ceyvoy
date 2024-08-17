@@ -1,43 +1,73 @@
 #footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* padding: 20px; */
-    background-color: #f1f1f1;
-    margin-bottom: 0%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    font-family: 'Arial', sans-serif;
 }
 
-#footer li {
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 50px;
+}
+
+.footer-container h4 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #168ddd;
+}
+
+.footer-container ul {
     list-style: none;
-    padding: 0 20px;
-    position:relative;
-}
-
-#footer li a {
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #000000;
-    transition: 0.3s ease-in-out;
-}
-
-#footer ul {
-    display: flex;
-    flex-direction: row;
     padding: 0;
 }
 
-@media screen and (max-width: 769px) {
-    #footer {
-        flex-direction: column;
-        align-items:center;
-    }
+.footer-container ul li {
+    margin-bottom: 10px;
+}
 
-    #footer ul {
-        flex-direction: column;
-    }
+.footer-container ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-    #footer li {
-        margin-bottom: 15px;
-    }
+.footer-container ul li a:hover {
+    color: #12e5ec;
+}
+
+.contact-details ul li {
+    display: flex;
+    align-items: center;
+}
+
+.contact-details ul li svg {
+    margin-right: 10px;
+    color: #21d2d8;
+}
+
+.social-links ul li {
+    display: flex;
+    align-items: center;
+}
+
+.social-links ul li svg {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #21d2e9;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #222;
+    color: #bbb;
+    font-size: 14px;
+}
+git config --global user.email "randuliyk@gmail.com"
+
+.footer-bottom p {
+    margin: 0;
 }
