@@ -1,50 +1,56 @@
-.currency-converter-container {
-    background-color: #cfeff1;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 400px;
-    margin: 50px auto;
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
-.currency-converter-container h2 {
-    color: #0F646A;
-    margin-bottom: 20px;
-}
-
-.currency-converter-container label {
-    color: #0F646A;
-    margin-right: 10px;
-    font-weight: bold;
-}
-
-.currency-converter-container input,
-.currency-converter-container select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #0F646A;
-    border-radius: 5px;
-}
-
-.currency-converter-container button {
-    background-color: #0F646A;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.currency-converter-container button:hover {
-    background-color: #7ADFE6;
-}
-
-.currency-converter-container p {
-    color: #0F646A;
-    font-weight: bold;
-    margin-top: 20px;
-}
+.currency-converter-page{
+    background-image: url('../assets/bg9.jpg');
+    background-size: cover;
+    }
+    .currency-converter-container {
+        background-color: #cfeff1;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 400px;
+        margin: 50px auto;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      
+    }
+    
+    .currency-converter-container h2 {
+        color: #0F646A;
+        margin-bottom: 20px;
+    }
+    
+    .currency-converter-container label {
+        color: #0F646A;
+        margin-right: 10px;
+        font-weight: bold;
+    }
+    
+    .currency-converter-container input,
+    .currency-converter-container select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #0F646A;
+        border-radius: 5px;
+    }
+    
+    .currency-converter-container button {
+        background-color: #0F646A;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .currency-converter-container button:hover {
+        background-color: #7ADFE6;
+    }
+    
+    .currency-converter-container p {
+        color: #0F646A;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    
