@@ -1,0 +1,154 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.logout-btn {
+    background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(-135deg, #899FD4 0%, #A389D4 100%);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #dddddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.img {
+    max-width: 50px;
+    height: auto;
+}
+
+/* .headnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #6f8996;
+    color: #ECF0F5;
+}
+
+.headnav h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: bold;
+} */
+
+.db_header{
+    text-align: center;
+    padding-top: 15px;
+}
+
+.db_header2{
+    text-align: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Figtree', sans-serif;
+}
+
+/* body {
+    min-height: 100vh;
+    background: #3A1C71;
+    background: linear-gradient(45deg, #3A1C71, #D76D77, #FFAF7B);
+} */
+
+.headnav {
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    padding: 16px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    /* cursor: pointer; */
+    text-align: end;
+    color: black;
+}
+
+.profile h3 {
+    text-align: end;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.profile p {
+    line-height: 1;
+    font-size: 14px;
+    opacity: .6;
+}
+
+.profile .img-box {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile .img-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
