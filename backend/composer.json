@@ -1,0 +1,37 @@
+{
+  "name": "ceyvoy/ceyvoy-api",
+  "description": "api of ceyvoy project",
+  "autoload": {
+    "psr-4": {
+      "CeyvoyApi\\": "API/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Sahani Randula",
+      "email": "iit21006@std.uwu.ac.lk"
+    },
+    {
+      "name": "Poojya Senevirathna"
+      
+    },
+    {
+      "name": "Nethma Herath"
+    },
+    {
+      "name": "Randuli Kadigawa"
+    },
+    {
+      "name": "Fathima Himna"
+    },
+    {
+      "name": "Akeesha Widanage"
+    }
+  ],
+  "require": {
+    "bramus/router": "~1.6",
+    "vlucas/phpdotenv": "^5.6",
+    "phpmailer/phpmailer": "^6.9",
+    "firebase/php-jwt": "^6.10"
+  }
+}
