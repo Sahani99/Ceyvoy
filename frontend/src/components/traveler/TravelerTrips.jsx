@@ -63,7 +63,12 @@ const TravelerTrips = () => {
                 Guide : {trip?.guide_name}
               </p>
               <p className="text-sm text-gray-600">
-                Guide Status : {trip?.guide_status}
+                Guide Status :{" "}
+                <span
+                  className={` ${trip?.guide_status === "PENDING" && "text-yellow-500"} ${trip?.guide_status === "APPROVED" && "text-green-500"} ${trip?.guide_status === "REJECTED" && "text-red-500"} `}
+                >
+                  {trip?.guide_status}
+                </span>
               </p>
               <p className="text-sm text-gray-600">
                 Guide Contact : {trip?.guide_contact}
@@ -164,7 +169,7 @@ const SubmitFeedback = ({ isOpen, setIsOpen, guideId }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-2xl overflow-y-auto max-h-[90vh]">
+      <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Submit Feedback</DialogTitle>
           <DialogDescription className="text-xs font-medium">

@@ -62,7 +62,12 @@ const GuideRequests = () => {
             </p>
             <p className="text-sm text-gray-600">Budget : {trip?.budget} LKR</p>
             <p className="text-sm text-gray-600">
-              Status : {trip?.guide_status}
+              Status :{" "}
+              <span
+                className={` ${trip?.guide_status === "PENDING" && "text-yellow-500"} ${trip?.guide_status === "APPROVED" && "text-green-500"} ${trip?.guide_status === "REJECTED" && "text-red-500"} `}
+              >
+                {trip?.guide_status}
+              </span>
             </p>
 
             <p className="mt-2 border-t border-dashed border-gray-500 pt-2 text-sm text-gray-600">

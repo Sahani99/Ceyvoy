@@ -196,7 +196,7 @@ const AddLocation = ({ isOpen, setIsOpen, loadData }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-2xl overflow-y-auto max-h-[90vh]">
+      <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add New Location</DialogTitle>
           <DialogDescription className="text-xs font-medium">
@@ -207,7 +207,7 @@ const AddLocation = ({ isOpen, setIsOpen, loadData }) => {
 
         {/* form */}
         <form
-          onSubmit={handleSubmit}s
+          onSubmit={handleSubmit}
           className="flex w-full flex-col items-center justify-center"
         >
           {/* title */}
@@ -488,7 +488,15 @@ const LocationsCards = ({ items }) => {
             className="h-48 w-full rounded-lg object-cover"
           />
 
-          <p className="absolute end-1 top-1 flex w-fit rounded-sm bg-slate-950 px-3 py-0.5 text-xs font-medium capitalize text-white">
+          <p
+            className={`absolute end-1 top-1 flex w-fit rounded-sm px-3 py-0.5 text-xs font-medium capitalize text-white ${
+              item?.status?.toLowerCase() === "pending"
+                ? "bg-yellow-500"
+                : item?.status?.toLowerCase() === "rejected"
+                  ? "bg-red-500"
+                  : "bg-green-500"
+            } `}
+          >
             {item?.status?.toLowerCase()}
           </p>
 

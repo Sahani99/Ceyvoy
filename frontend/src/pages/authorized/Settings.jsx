@@ -357,10 +357,10 @@ const Settings = () => {
             className="flex w-full flex-col items-center justify-center rounded-md bg-white p-6 shadow-sm drop-shadow-lg"
           >
             <h1 className="mb-1 w-full text-2xl font-medium text-gray-800">
-              Change Name
+              Change Username
             </h1>
             <p className="mb-3 w-full text-xs text-gray-600">
-              Please enter your new name to change your name.
+              Please enter your new username to change your username.
             </p>
 
             {/* name field */}

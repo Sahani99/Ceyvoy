@@ -47,6 +47,7 @@ const Summery = ({ setCurrentStep }) => {
         new Date(questionnaire.arrival).getDate() + questionnaire.days,
       ),
     );
+    formData.append("people", questionnaire.people);
     await axios
       .post("/get_start", formData)
       .then(({ data }) => {
@@ -56,12 +57,7 @@ const Summery = ({ setCurrentStep }) => {
       .catch(() => {
         errorToast("Failed to load data");
       });
-  }, [
-    locations,
-    questionnaire.arrival,
-    questionnaire.days,
-    questionnaire.language,
-  ]);
+  }, [locations, questionnaire.arrival, questionnaire.days, questionnaire.language, questionnaire.people]);
 
   const validateForm = () => {
     if (summery.accommodations.length === 0) {
