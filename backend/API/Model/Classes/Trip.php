@@ -168,7 +168,7 @@ class Trip
      * @param $location array
      * @return array
      */
-    public function getAccommodationsByLocations($conn, $locations, $people)
+    public function getAccommodationsByLocations($conn, $locations)
     {
         try {
             $accommodations = array();
@@ -179,11 +179,10 @@ class Trip
                 $stmt->bindValue(1, $location);
                 $stmt->execute();
                 $location = $stmt->fetch(PDO::FETCH_ASSOC);
-                // get accommodations using location id , city and maximum people
-                $query = "SELECT * from accommodations WHERE city = ? AND max_people >= ?";
+                // get accommodations using location id from accommodation table
+                $query = "SELECT * from accommodations WHERE city = ?";
                 $stmt = $conn->prepare($query);
                 $stmt->bindValue(1, $location['city']);
-                $stmt->bindValue(2, $people);
                 $stmt->execute();
                 $accommodations[$location['city']] = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }

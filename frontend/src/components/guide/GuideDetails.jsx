@@ -160,7 +160,7 @@ const GuideDetails = () => {
             name="license"
             type="text"
             maxLength="256"
-            placeholder="N-31005"
+            placeholder="Galle fort"
             value={formData.license}
             onChange={(e) =>
               setFormData((prevData) => ({

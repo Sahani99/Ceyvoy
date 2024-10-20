@@ -39,12 +39,10 @@ if (isset($_POST["step"]) && $_POST["step"] == 1) {
         $end_date = $_POST["end_date"];
         //get language
         $language = $_POST["language"];
-        // peoples
-        $people = $_POST["people"];
         // create location object
         $location = new Locations();
         // get accommodations 
-        $accommodations = $system->getAccommodationsByLocations(DBConnector::getConnection(), $locations , $people);
+        $accommodations = $system->getAccommodationsByLocations(DBConnector::getConnection(), $locations);
         // get guides
         $guides = $system->getGuidesByDateRange(DBConnector::getConnection(), $start_date, $end_date, $language);
         http_response_code(200);

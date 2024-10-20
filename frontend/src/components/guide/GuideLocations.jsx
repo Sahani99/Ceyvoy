@@ -218,7 +218,7 @@ const AddLocation = ({ isOpen, setIsOpen, loadData }) => {
               name="title"
               type="text"
               maxLength="256"
-              placeholder="N-31005"
+              placeholder="Galle fort"
               value={formData.title}
               onChange={(e) =>
                 setFormData((prevData) => ({
