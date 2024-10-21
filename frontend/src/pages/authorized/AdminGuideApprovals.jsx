@@ -131,7 +131,7 @@ const GuideApprovals = () => {
         {/* if no location requests */}
         {guides?.length === 0 && (
           <div className="mt-10 flex w-full items-center justify-center">
-            <h1 className="text-lg font-medium">No location requests</h1>
+            <h1 className="text-lg font-medium">No Guide Approval requests</h1>
           </div>
         )}
       </div>
